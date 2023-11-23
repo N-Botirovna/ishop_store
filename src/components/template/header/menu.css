@@ -1,0 +1,10 @@
+.header-menu {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    box-shadow: 0 5px 3px #f0f0f0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+}

@@ -1,0 +1,7 @@
+.products{
+    flex: 5;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}

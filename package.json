@@ -11,8 +11,11 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
+    "@iconscout/react-unicons": "^2.0.2",
+    "@iconscout/unicons": "^4.0.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.19.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

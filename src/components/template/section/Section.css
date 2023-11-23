@@ -1,0 +1,20 @@
+.section{
+    margin-top: 40px !important;
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 7;
+    grid-column-gap: 15px;
+    margin-bottom: 25px;
+
+}
+.section:nth-child(even){
+    flex-direction: row-reverse;
+}
+
+.section p {
+    font-size: 14px;
+    color: #000;
+    font-family: sans-serif;
+}
