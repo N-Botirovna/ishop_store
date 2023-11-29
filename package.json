@@ -13,8 +13,10 @@
   "dependencies": {
     "@iconscout/react-unicons": "^2.0.2",
     "@iconscout/unicons": "^4.0.8",
+    "axios": "^1.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-phone-number-input": "^3.3.7",
     "react-router-dom": "^6.19.0"
   },
   "devDependencies": {

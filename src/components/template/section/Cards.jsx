@@ -31,3 +31,39 @@ const Cards = () => {
 }
 
 export default Cards
+
+// import React, { useEffect, useState } from 'react';
+// import Card from '../../ui/Card';
+// import "./Cards.css";
+// import axios from 'axios';
+
+// const Cards = () => {
+//     const [data, setData] = useState([]);
+
+//     useEffect(() => {
+//         fetchData();
+//     }, []);
+
+//     const fetchData = async () => {
+//         try {
+//             const response = await axios.get('https://fakestoreapi.com/products', {
+//                 mode: 'cors'
+//               });
+//             setData(response.data);
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     };
+
+//     return (
+//         <>
+//             <ul className='products'>
+//                 {data.slice(0, 8).map((product, index) => (
+//                     <Card key={index} product={product} />
+//                 ))}
+//             </ul>
+//         </>
+//     );
+// };
+
+// export default Cards;

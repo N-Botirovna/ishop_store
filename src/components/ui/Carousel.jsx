@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
 
-import img1 from './img/img1.jpg';
+import img1 from './img/img4.jpg';
 import img2 from './img/img2.jpg';
-import img3 from './img/img3.jpg';
+import img3 from './img/img5.jpg';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,7 +29,7 @@ const Carousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       goToNextSlide();
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);

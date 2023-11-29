@@ -7,6 +7,8 @@ const Offers = () => {
     return (
         <div class="ads-products">
             <h2>Sizga taklif qilamiz:</h2>
+            <p>Opisaniye</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, numquam vero quam corporis commodi placeat!</p>
             <div className="wrapper">
                 <AdsCard/>
                 <AdsCard/>
