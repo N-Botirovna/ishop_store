@@ -6,9 +6,12 @@ import { UilShoppingCartAlt } from '@iconscout/react-unicons';
 import { UilUser } from '@iconscout/react-unicons';
 import { UilBars } from '@iconscout/react-unicons';
 import InputField from '../../ui/InputField';
+import { useTranslation } from 'react-i18next'; // Tilni import qiling
 import './navbar.css';
 
 const Navbar = () => {
+  const { t }= useTranslation(); // Tilga moslangan hook
+
   let icons = {
     "Saralangan": <UilHeart />,
     "Buyurtmalar": <UilCube />,
@@ -51,7 +54,7 @@ const Navbar = () => {
           <div key={key} className="action-buttons">
             <div onClick={() => handleClick(key)}>
               {value}
-              <p>{key}</p>
+              <p>{t(key)}</p> {/* Tilga moslangan matn */}
             </div>
           </div>
         ))}
