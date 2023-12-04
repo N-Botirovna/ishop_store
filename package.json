@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.5.0",
     "react-phone-number-input": "^3.3.7",
-    "react-router-dom": "^6.19.0"
+    "react-router-dom": "^6.19.0",
+    "rerousel": "^0.1.9"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

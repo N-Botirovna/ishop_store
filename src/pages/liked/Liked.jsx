@@ -1,8 +1,9 @@
 import React from 'react'
 import Footer from '../../components/template/footer/Footer'
-import Hero from '../../components/template/header/Hero'
+
 import Menu from '../../components/template/header/Menu'
 import Navbar from '../../components/template/header/Navbar'
+import Carousel2 from '../../components/ui/Carousel2'
 import ProductCarousel from '../../components/ui/ProductCarousel'
 import "./liked.css"
 
@@ -14,7 +15,7 @@ const Liked = () => {
     <div className='container liked'>
         <h3>There is nothing!</h3>
         </div>
-    <Hero/>
+    <Carousel2/>
     <div className='container'>
         <h1>Sizga tavsiya qilamiz:</h1>
         <ProductCarousel/>

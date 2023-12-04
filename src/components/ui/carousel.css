@@ -8,6 +8,10 @@
     overflow: hidden;
     border-radius: 8px;
   }
+  .carousel.carousel2{
+    height: 200px;
+    margin-top: 70px;
+  }
   
   .carousel-image {
     width: 100%;

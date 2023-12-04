@@ -15,15 +15,16 @@ function Card({ name, darkMode }) {
 
                             </div>
                             <div className="card-info-block">
-                                <p className="product-card-subtitle">Qalam</p>
-                                <h4 className="product-card-price-info">10000 so'm</h4>
-                                <div className="price-credit"> <p>100 so'mdan 12 oyga</p> </div> 
+                                <p className="product-card-subtitle">NOUTBUK LENOVO IP3 15IGL05 CEL N4020</p>
+                            
+                                <div className="price-credit"> <p>528 000 so'mdan 12 oyga</p> </div> 
                                 <div className="product-card-price-info-wrapper">
-                                   <button className="product-purchase">Xarid qilish</button>
+                                <h4 className="product-card-price-info">2 885 000 so'm</h4>
                                    <button className="product-add-to-cart"><UilShoppingCart/></button>
                                 </div>
 
-                            </div>
+                            </div> 
+
                             
 
                         </div> 
@@ -49,7 +50,7 @@ export default Card;
 //             <li className="mb-5">
 //                 <div className="product-card">
 //                     <div className="product-card-image">
-//                         <img className="product-card-image-item" src={image} alt={name} />
+//                         <-img className="product-card-image-item" src={image} alt={name} />
 //                         <button className="product-card-like"><UilHeart /></button>
 //                     </div>
 //                     <div className="card-info-block">

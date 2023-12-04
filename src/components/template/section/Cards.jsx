@@ -46,7 +46,7 @@ export default Cards
 
 //     const fetchData = async () => {
 //         try {
-//             const response = await axios.get('https://nazimjonovna.pythonanywhere.com/pro/get/', {
+//             const response = await axios.get('https://nazimjonovna.pythonanywhere.com/', {
 //                 mode: 'cors'
 //               });
 //             setData(response.data);

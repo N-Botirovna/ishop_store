@@ -1,0 +1,11 @@
+.carousel-container {
+   
+    margin: 40px 0;
+  }
+.myDiv{
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(100%/5);
+      margin: 0 10px;    
+  }

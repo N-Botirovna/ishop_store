@@ -6,15 +6,16 @@ import { UilShoppingCartAlt } from '@iconscout/react-unicons';
 import { UilUser } from '@iconscout/react-unicons';
 import { UilBars } from '@iconscout/react-unicons';
 import InputField from '../../ui/InputField';
-import { useTranslation } from 'react-i18next'; // Tilni import qiling
+import { useTranslation } from 'react-i18next';
 import './navbar.css';
+import i18n from '../../../i18n';
 
 const Navbar = () => {
-  const { t }= useTranslation(); // Tilga moslangan hook
+  const { t }= useTranslation(); 
 
   let icons = {
     "Saralangan": <UilHeart />,
-    "Buyurtmalar": <UilCube />,
+    
     "Savat": <UilShoppingCartAlt />,
     "Kirish": <UilUser />
   };
@@ -27,15 +28,15 @@ const Navbar = () => {
       case "Savat":
         window.location.href = "/shopping-cart";
         break;
-      case "Buyurtmalar":
-        window.location.href = "/orders";
-        break;
       case "Saralangan":
         window.location.href = "/like";
         break;
       default:
         break;
     }
+  };
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
   };
 
   return (
@@ -58,6 +59,16 @@ const Navbar = () => {
             </div>
           </div>
         ))}
+        <div className="language-selector">
+          <select
+            value={i18n.language}
+            onChange={(e) => changeLanguage(e.target.value)}
+          >
+            <option value="ru">Rus</option>
+            <option value="uz-latn">Latin</option>
+            <option value="uz-cyrl">Krill</option>
+          </select>
+        </div>
       </div>
     </div>
   );

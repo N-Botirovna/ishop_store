@@ -10,7 +10,7 @@ import './index.css';
 import './i18n';
 
 i18next.init({
-  lng: 'en',
+  lng: 'uz-latn',
   resources: {
     uzLatin: {
       translation: translationUzLatin,
