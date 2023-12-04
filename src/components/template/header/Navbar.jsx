@@ -11,11 +11,11 @@ import './navbar.css';
 import i18n from '../../../i18n';
 
 const Navbar = () => {
-  const { t }= useTranslation(); 
+  const { t } = useTranslation();
 
   let icons = {
     "Saralangan": <UilHeart />,
-    
+
     "Savat": <UilShoppingCartAlt />,
     "Kirish": <UilUser />
   };
@@ -63,6 +63,7 @@ const Navbar = () => {
           <select
             value={i18n.language}
             onChange={(e) => changeLanguage(e.target.value)}
+            className="custom-select"
           >
             <option value="ru">Rus</option>
             <option value="uz-latn">Latin</option>
