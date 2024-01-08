@@ -10,8 +10,7 @@ const Header = () => {
     </div>
     <Navbar/>
     <Menu/>
-    <Hero/>
-    
+    <Hero/>   
     </>
   )
 }

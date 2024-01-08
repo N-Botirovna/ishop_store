@@ -3,7 +3,7 @@ import { UilHeart } from '@iconscout/react-unicons'
 import { UilShoppingCart } from '@iconscout/react-unicons'
 import "./card.css"
 
-function Card({ name, darkMode }) {
+function MyCard({ name, darkMode }) {
     return (
         <Link to={`/single-page/${name}`} className={`text-gray-600  ${darkMode ? 'dark' : ''}`}>
             <li className={`mb-5 ${darkMode ? 'bg-[#2B3743] text-white' : 'bg-white'}`}
@@ -33,7 +33,7 @@ function Card({ name, darkMode }) {
     );
 }
 
-export default Card;
+export default MyCard;
 
 
 // import React from 'react';

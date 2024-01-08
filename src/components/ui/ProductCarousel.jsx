@@ -1,10 +1,8 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Rerousel } from 'rerousel';
-import Card from './Card';
 import './ProductCarousel.css';
 
-const ProductCarousel = () => {
+const ProductCarousel = ({ item }) => {
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -12,7 +10,7 @@ const ProductCarousel = () => {
       if (cardRef.current) {
         cardRef.current.next();
       }
-    }, 500); //
+    }, 500);
 
     return () => {
       clearInterval(interval);
@@ -24,7 +22,7 @@ const ProductCarousel = () => {
       <Rerousel>
         {Array.from({ length: 15 }).map((_, index) => (
           <div className="myDiv" key={index}>
-            {index === 0 ? <Card ref={cardRef} /> : <Card />}
+            {index === 0 ? React.cloneElement(item, { ref: cardRef }) : item}
           </div>
         ))}
       </Rerousel>

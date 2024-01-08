@@ -14,6 +14,7 @@ const NoPage = () => {
       </section>
       <div class="link-container">
         <Link to="/">Bosh sahifaga qaytish</Link>
+        
       </div>
     </div>
   )

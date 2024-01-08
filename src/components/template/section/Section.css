@@ -9,6 +9,6 @@
     margin-bottom: 25px;
 
 }
-.section:nth-child(even){
+.section:nth-of-type(even){
     flex-direction: row-reverse;
 }

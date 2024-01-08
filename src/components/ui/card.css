@@ -7,8 +7,9 @@
     width: 100%;
     cursor: pointer;
     transition: 0.3s;
-    box-shadow: 0 0 3px rgba(204, 204, 204, 0.6) ;
+    /* box-shadow: 0 0 3px rgba(204, 204, 204, 0.6) ; */
   }
+
   
   .product-card:hover {
     box-shadow: 0px 8px 15px -5px rgba(204, 204, 204, 0.6);
@@ -75,7 +76,6 @@
   
   .product-card-image {
     position: relative;
-    height: 200px;
     background-color: #f5f5f5;
   }
   
@@ -107,7 +107,8 @@
 
   .price-credit {
   
-    background: #ff6600;
+    /* background: #ff6600; */
+    background-color: rgb(94, 221, 85);
     margin-right: auto;
     padding:4px 8px;
     color: white;
@@ -135,4 +136,9 @@ h4{
   color: #fff;
   font-weight: bolder;
 
+}
+.offers{
+  width: 400px;
+  height: 680px;
+  background-color: transparent;
 }

@@ -9,6 +9,7 @@ import InputField from '../../ui/InputField';
 import { useTranslation } from 'react-i18next';
 import './navbar.css';
 import i18n from '../../../i18n';
+import image from '../../../../src/images/logo/logoLast.png'
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -42,7 +43,7 @@ const Navbar = () => {
   return (
     <div className="head">
       <div className="header-logo">
-        <Link to="/" className="brand-logo">ishopstore</Link>
+        <Link to="/" className="brand-logo"><img className='logo' src={image} alt="ishopstore" /></Link>
       </div>
       <div className="middle-header">
         <div className="header-catalog">

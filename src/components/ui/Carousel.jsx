@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
 
-import img1 from './img/img4.jpg';
-import img2 from './img/img2.jpg';
-import img3 from './img/img5.jpg';
+import img1 from '../../images/carousel/carousel31.png';
+import img2 from '../../images/carousel/carousel4.png';
+import img3 from '../../images/carousel/carousel1.png';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,3 +65,46 @@ const Carousel = () => {
 };
 
 export default Carousel;
+
+// import React from 'react';
+// import { Carousel } from '@material-ui/lab';
+
+// const AutoRotatingCarousel = () => {
+//   const [open, setOpen] = React.useState(true);
+
+//   const handleClose = () => {
+//     setOpen(false);
+//   };
+//   const images = [
+//     {
+//       id: 1,
+//       src: 'img1.jpg',
+//       alt: 'Image 1',
+//     },
+//     {
+//       id: 2,
+//       src: 'img2.jpg',
+//       alt: 'Image 2',
+//     },
+//     {
+//       id: 3,
+//       src: 'img3.jpg',
+//       alt: 'Image 3',
+//     },
+//   ];
+//   return (
+//     <Carousel
+//       autoPlay
+//       open={open}
+//       onClose={handleClose}
+//     >
+//       {images.map((image) => (
+//         <div key={image.id}>
+//           <img src={image.src} alt={image.alt} />
+//         </div>
+//       ))}
+//     </Carousel>
+//   );
+// };
+
+// export default AutoRotatingCarousel;
