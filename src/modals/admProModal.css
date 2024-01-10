@@ -1,0 +1,46 @@
+/* admProModal.css */
+
+.none {
+  display: none;
+}
+
+.completed {
+  background-color: rgb(37, 38, 37);
+  color: white;
+  font-weight: bold;
+  /* Boshqa stil atributlarini ham qo'shishingiz mumkin */
+}
+
+.adm-product-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.adm-product-modal h2 {
+  margin-bottom: 20px;
+}
+
+.adm-product-modal input[type="text"],
+.adm-product-modal input[type="number"],
+.adm-product-modal select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.adm-product-modal input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.adm-product-modal label {
+  margin-right: 10px;
+}
+
+.adm-product-modal select {
+  width: 200px;
+}
+  

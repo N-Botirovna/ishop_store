@@ -8,6 +8,7 @@ import MyCard from '../../components/ui/MyCard'
 import ProductCarousel from '../../components/ui/ProductCarousel'
 import "./home.css"
 
+
 const Home = () => {
   return (
    <>
@@ -25,7 +26,6 @@ const Home = () => {
     <div className='container'>
         <ProductCarousel item={<MyCard/>}/>
     </div>
-    
    <Footer/>
    </>
   )

@@ -1,67 +1,20 @@
 
-  /* .product-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .card-number {
-    font-size: 18px;
-    font-weight: bold;
-    grid-column: 1;
-    grid-row: 1;
-  }
-  
-  .card-body {
-    display: flex;
-    align-items: center;
-    grid-column: 2;
-    grid-row: 1 / span 4;
-  }
-  
-  .card-image {
-    width: 100px;
-    height: 50px;
-    object-fit: cover;
-    margin-right: 10px;
-  }
-  
-  .card-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .card-info {
-    margin-bottom: 5px;
-  }
-  
-  .card-info-label {
-    font-weight: bold;
-  }
-  
-  .card-info:nth-child(2) {
-    grid-row: 2;
-  }
-  
-  .card-info:nth-child(3) {
-    grid-row: 3;
-  }
-  
-  .card-info:nth-child(4) {
-    grid-row: 4;
-  }
-  
-  .card-info:nth-child(5) {
-    grid-row: 5;
-  }
-  
-  .card-info:nth-child(6) {
-    grid-row: 6;
-  }
-  
-  .card-info:nth-child(7) {
-    grid-row: 7;
-  } */
+.table-container {
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border: 1px solid gray;
+}
+
+.table th {
+  background-color: gray;
+  color: white;
+}

@@ -7,11 +7,13 @@ import AdmProduct from '../../components/template/admin/AdmProduct';
 import Side from '../../components/template/admin/Side';
 import Pagination from '@mui/material/Pagination';
 
-import ZeroWidthStack from '../../components/template/admin/ZeroWidthStack';
 
 import './admin.css';
+import { useState } from 'react';
 
 const Admin = () => {
+    const [complete, setComplete] = useState(false);
+
     return (
         <>
             <div className="top-header"></div>
@@ -19,14 +21,14 @@ const Admin = () => {
                 <AdmHeader />
                 <div className="main">
                     <div className="cards">
-                        <AdmCards />
+                        <AdmCards data={[complete, setComplete]}/>
                     </div>
                    
                 </div>
                 
                 <div className="myProducts">
                     <div className="zeroStack">
-                        <ZeroWidthStack/>
+                        <AdmProduct/>
                         <Pagination count={10} variant="outlined" sx={{display: 'flex', justifyContent: 'flex-end', marginBlockStart: '20px'}}/>
                     </div>
                     <div className="filtered">

@@ -5,12 +5,15 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import AdmProductModal from '../../../modals/AdmProductModal';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const card1 = (
   <React.Fragment>
     <CardContent>
       <Typography size="small" component="div" align="center">
-        Siz qo'shgan tovarlar soni:
+        Tovarlar soni:
       </Typography>
     </CardContent>
     <CardActions sx={{ justifyContent: 'center', marginTop: '-25px'  }}>
@@ -45,7 +48,9 @@ const card3 = (
   </React.Fragment>
 );
 
-export default function AdmCards() {
+export default function AdmCards({data}) {
+  const [complete, isComplete] = useState(data);
+  console.log(complete);
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: '50px', marginTop: '20px', marginBottom: '50px' }}>
       <Typography variant="h5" sx={{ alignSelf: 'center',paddingInlineStart: "80px", width: '60%' }}>Tovarlar ro'yxati</Typography>
@@ -55,9 +60,11 @@ export default function AdmCards() {
       <Card variant="outlined" sx={{ width: '20%' , height: '100px'}}>
         {card2}
       </Card>
-      <Card variant="outlined" sx={{ width: '20%' , height: '100px'}}>
+      <Link to={'/admin/admin/add'}>
+      <Card variant="outlined" sx={{ width: '100%' , height: '100px'}} >
         {card3}
       </Card>
+      </Link>
     </Box>
   );
 }
