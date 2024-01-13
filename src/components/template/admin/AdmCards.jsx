@@ -48,6 +48,19 @@ const card3 = (
   </React.Fragment>
 );
 
+const card4 = (
+  <React.Fragment>
+    <CardContent>
+      <Typography size="small" component="div" align="center">
+        Reklama qo'shish:
+      </Typography>
+    </CardContent>
+    <CardActions sx={{ justifyContent: 'center', marginTop: '-15px'  }}>
+      <Button size="large">+</Button>
+    </CardActions>
+  </React.Fragment>
+)
+
 export default function AdmCards({data}) {
   const [complete, isComplete] = useState(data);
   console.log(complete);
@@ -60,11 +73,14 @@ export default function AdmCards({data}) {
       <Card variant="outlined" sx={{ width: '20%' , height: '100px'}}>
         {card2}
       </Card>
-      <Link to={'/admin/admin/add'}>
+      <Link to={'/admin/admin/add'} >
       <Card variant="outlined" sx={{ width: '100%' , height: '100px'}} >
         {card3}
       </Card>
       </Link>
+      <Card variant="outlined" sx={{ width: '20%' , height: '100px'}} >
+        {card4}
+      </Card>
     </Box>
   );
 }

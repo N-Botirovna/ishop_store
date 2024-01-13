@@ -4,7 +4,7 @@ import './otpInput.css';
 
 export default function OtpInput() {
   const inputRefs = useRef([]);
-  const [resendTimer, setResendTimer] = useState(60); 
+  const [resendTimer, setResendTimer] = useState(3); 
 
   useEffect(() => {
     let timerId;

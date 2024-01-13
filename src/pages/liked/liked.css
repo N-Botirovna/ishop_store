@@ -1,6 +1,14 @@
 .liked{
-  height: 400px;
-  border: 1ps solid red;
-  margin-top: 50px;
-  margin: auto;
+  display: flex;
+  gap: 30px;
+}
+.liked-heading{
+  margin: 30px 0;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 26px;
+  color: rgb(87, 86, 86);
+}
+.liked-card{
+  width: 230px;
 }

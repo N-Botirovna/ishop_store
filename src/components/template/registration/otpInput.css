@@ -1,7 +1,7 @@
 .otp-page{
-    max-width: 330px;
+    max-width: 280px;
     width: 100%;
-    padding:30px  25px;
+    padding:30px  50px;
     box-shadow: 0 0 7px #ccc;
     border-radius: 10px;
     margin: auto;
@@ -16,13 +16,13 @@
     color: rgb(57, 229, 57);
     transform: scale(2);
 }
-h3{
-    margin-top: 40px;
+.otp-page h3{
+    margin-top: 20px;
     font-size: 27px;
     line-height: 35px;
     font-weight: 600;
 }
-p{
+.otp-page p{
     margin: 20px 0;
     color: rgb(174, 172, 172);
 }
@@ -54,7 +54,15 @@ p{
     color: aliceblue;
     font-size: 17px;
     font-weight: 500;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 .input{
     width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    padding: 5px 1px;
+    font-size: 16px;
+    margin: 10px 0;
 }

@@ -5,8 +5,8 @@ import PhoneInput from './PhoneInput'
 export default function Register() {
   return (
     <div className='container'>
-        <PhoneInput/>
-        {/* <OtpInput/> */}
+        {/* <PhoneInput/> */}
+        <OtpInput/>
     </div>
   )
 }

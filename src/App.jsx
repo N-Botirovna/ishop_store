@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route,BrowserRouter as Router, Routes } from "react-router-dom";
-import Register from "./components/registration/Register";
+import Register from "./components/template/registration/Register";
 import AdmProductModal from "./modals/AdmProductModal";
 import Admin from "./pages/admin/Admin";
 import AdmLogin from "./pages/admLogin/AdmLogin";

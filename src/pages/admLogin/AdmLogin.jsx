@@ -12,25 +12,45 @@ export default function AdmLogin({ data }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(username.current.value);
+
         let obj = {
             username: username.current.value,
-            password: userPass.current.value
+            password: userPass.current.value,
+            is_boss: false
         }
         console.log(obj);
+        // fetch('http://164.92.99.180:8000/adm/admin_login/', {
+        //     method: 'POST',
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //       },
+        //     body: JSON.stringify(obj),
+        // }).then(res => res)
+        // .then(data => {
+        //     if(data.token){
+        //         setToken(data)
+        //     localStorage.setItem('token', JSON.stringify(data))
+        //     }
+        //     console.log('data', data);
+        //     console.log('token', token);
+        // })
+
         fetch('http://164.92.99.180:8000/adm/admin_login/', {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify(obj),
-            credentials: 'include'
-        }).then(res => res.json()).then(data => {
-            if(data.token){
-                setToken(data)
-            localStorage.setItem('token', JSON.stringify(data))
-            }
+            body: new URLSearchParams(obj).toString()
         })
+            .then(res => res.json())
+            .then(data => {
+                if (data.token) {
+                    setToken(data);
+                    localStorage.setItem('token', JSON.stringify(data));
+                }
+                console.log('data', data);
+                console.log('token', token);
+            });
     }
 
     return (
@@ -39,7 +59,7 @@ export default function AdmLogin({ data }) {
                 <h1>Registratsiya oynasi:</h1>
                 <form action="" onSubmit={handleSubmit}>
                     <input ref={username} type="text" name='adm-name' placeholder='Login' /> <br />
-                    <input ref={userPass} type="text" name='adm-pass' placeholder="Password" /> <br />
+                    <input ref={userPass} type="password" name='adm-pass' placeholder="Password" /> <br />
                     <button>Kirish</button>
                 </form>
             </div>
