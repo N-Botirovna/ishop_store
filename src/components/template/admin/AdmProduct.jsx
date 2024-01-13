@@ -14,6 +14,8 @@ function AdmProduct() {
       .then((res) => res.json())
       .then((data) => setOrder(data.products));
   }, []);
+  console.log('order', order);
+  
   console.log(order);
 
 
@@ -25,11 +27,9 @@ function AdmProduct() {
           .then((res) => res.json())
           .then((data) => {
             console.log("Item deleted successfully:", data);
-            // Iltimos, o'chirilgan elementni qaytarmasdan sahifani yangilang
           })
           .catch((error) => {
             console.error("Error deleting item:", error);
-            // Iltimos, xatolik xabarini foydalanuvchiga ko'rsating
           });
       }
  
@@ -57,7 +57,7 @@ function AdmProduct() {
             <tbody key={item.id}>
               <tr>
                 <td>{item.id}</td>
-                <td><img src={item.image.slice(2, -1)}/></td>
+                <td><img src={`http://164.92.99.180:8000${item.image.split("'")[5]}`}/></td>
                 <td>{item.info.name}</td>
                 <td>{item.cost}</td>
                 <td>{item.quantity}</td>
@@ -67,7 +67,9 @@ function AdmProduct() {
                 <td>{item.postavshik}</td>
                 <td>Edit</td>
                 <td onClick={() => handleDelete(item.id)}>Delete</td>
-                {console.log(item.image.slice(2, -1))}
+                {console.log(item.image.split("'")[5])}
+
+
               </tr>
             </tbody>
           ))
@@ -84,3 +86,49 @@ function AdmProduct() {
 }
 
 export default AdmProduct;
+
+
+// import React, { useState, useEffect } from 'react';
+
+// const AdmProduct = () => {
+//   const [product, setProduct] = useState(null);
+
+//   useEffect(() => {
+//     const fetchProduct = async () => {
+//       try {
+//         const response = await fetch('http://164.92.99.180:8000/pro/get/');
+//         const data = await response.json();
+//         setProduct(data.products[0]);
+//       } catch (error) {
+//         console.error('Error fetching product:', error);
+//       }
+//     };
+
+//     fetchProduct();
+//   }, []);
+
+//   if (!product) {
+//     return <div>Loading...</div>;
+//   }
+
+//   let imageUrl = '';
+//   try {
+//     const imagesArray = JSON.parse(product.image);
+//     imageUrl = imagesArray[0].image;
+//   } catch (error) {
+//     console.error('Error parsing image:', error);
+//   }
+
+//   return (
+//     <div>
+//       <h1>Product Details</h1>
+//       <img src={`http://164.92.99.180:8000${imageUrl}`} alt="Product" />
+//       <p>ID: {product.id}</p>
+//       <p>Quantity: {product.quantity}</p>
+//       <p>Cost: {product.cost}</p>
+//       {/* Add other product details rendering here */}
+//     </div>
+//   );
+// };
+
+// export default AdmProduct;
