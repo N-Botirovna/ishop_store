@@ -1,6 +1,5 @@
 import React from 'react'
 import AdsCard from '../../ui/AdsCard'
-import Card from '../../ui/MyCard'
 import "./offers.css"
 
 const Offers = () => {

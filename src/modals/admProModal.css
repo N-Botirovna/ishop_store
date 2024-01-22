@@ -5,10 +5,7 @@
 }
 
 .completed {
-  background-color: rgb(37, 38, 37);
-  color: white;
   font-weight: bold;
-  /* Boshqa stil atributlarini ham qo'shishingiz mumkin */
 }
 
 .adm-product-modal {
@@ -34,6 +31,17 @@
 
 .adm-product-modal input[type="file"] {
   margin-bottom: 10px;
+  display: inline-block;
+  border-radius: 5px;
+  width: 200px;
+  height: 40px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+}
+
+.adm-product-modal input[type="file"]::placeholder {
+  content: "+ Choose File";
+  color: #999;
 }
 
 .adm-product-modal label {
@@ -42,5 +50,16 @@
 
 .adm-product-modal select {
   width: 200px;
+}
+.images-div{
+  display: flex;
+  gap: 5px;
+}
+.abouts{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 40px;
 }
   

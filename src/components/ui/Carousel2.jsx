@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
 
-import img1 from './img/img4.jpg';
-import img2 from './img/img2.jpg';
-import img3 from './img/img5.jpg';
+import img1 from './img/mishka.png';
+import img2 from './img/klaviatura.png';
+import img3 from './img/naushnik.png';
 
 const Carousel2 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

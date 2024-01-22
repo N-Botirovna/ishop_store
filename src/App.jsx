@@ -7,6 +7,7 @@ import AdmLogin from "./pages/admLogin/AdmLogin";
 import Home from "./pages/home/Home";
 import Liked from "./pages/liked/Liked";
 import NoPage from "./pages/noPage/NoPage";
+import SinglePage from "./pages/singlePage/SinglePage";
 
 function App() {
   const [token, setToken] = useState(JSON.parse(localStorage.getItem('token')) || '');
@@ -15,11 +16,10 @@ function App() {
     <Router>
       <Routes>
           <Route index element={<Home />} />
-          {/* <Route path="/register" element={<Register/>}/> */}
           <Route path="/register" element={<Register/>}/>
           <Route path="/like" element={<Liked/>}/>
           <Route path="/admin" element={token ? <Admin/>: <AdmLogin data={{token, setToken}}/>} />
-          <Route path="/admin/admin" element={<Admin/>} />
+          <Route path="/single-page/:id" element={<SinglePage/>}/>
           <Route path="/admin/admin/add" element={<AdmProductModal/>} />
           <Route path="*" element={<NoPage />} />
           

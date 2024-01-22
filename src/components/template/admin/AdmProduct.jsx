@@ -1,38 +1,55 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-// import './AdmProduct.css';
-import "./admProducts.css"
-function AdmProduct() {
+import React, { useEffect, useState } from 'react';
+import "./admProducts.css";
+import Pagination from '@mui/material/Pagination';
 
+function AdmProduct({ searchText }) {
   const [order, setOrder] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(10);
+
+
+ 
 
   useEffect(() => {
     fetch("http://164.92.99.180:8000/pro/get/", {
       method: "GET",
     })
-      .then((res) => res.json())
-      .then((data) => setOrder(data.products));
+      .then((res) => res.json()) 
+      .then((data) => setOrder(data.products))
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
-  console.log('order', order);
-  
-  console.log(order);
 
+  const handleDelete = (id) => {
+    fetch(`http://164.92.99.180:8000/pro/one/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Item deleted successfully:", data);
+      })
+      .catch((error) => {
+        console.error("Error deleting item:", error);
+      });
+  };
 
-    function handleDelete(id) {
-        fetch(`http://164.92.99.180:8000/pro/one/${id}`, {
-          method: "DELETE",
-          
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("Item deleted successfully:", data);
-          })
-          .catch((error) => {
-            console.error("Error deleting item:", error);
-          });
-      }
  
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = order ? order.slice(indexOfFirstProduct, indexOfLastProduct) : [];
+
+  const handlePageChange = (event, pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  const handleSearch = () => {
+    const filteredProducts = order.filter((item) =>
+      item.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredOrder(filteredProducts);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="table-container">
       <table className="table">
@@ -51,15 +68,17 @@ function AdmProduct() {
             <th>Delete</th>
           </tr>
         </thead>
-        
-        {order ? (
-          order.map((item) => (
-            <tbody key={item.id}>
-              <tr>
+
+        {currentProducts.length > 0 ? (
+          <tbody>
+            {currentProducts.map((item) => (
+              <tr key={item.id}>
                 <td>{item.id}</td>
-                <td><img src={`http://164.92.99.180:8000${item.image.split("'")[5]}`}/></td>
+                <td>
+                  <img src={item.images[0]?.image} alt="Product" />
+                </td>
                 <td>{item.info.name}</td>
-                <td>{item.cost}</td>
+                <td>{item.cost} so'm</td>
                 <td>{item.quantity}</td>
                 <td>{item.info.category}</td>
                 <td>{item.admin}</td>
@@ -67,20 +86,29 @@ function AdmProduct() {
                 <td>{item.postavshik}</td>
                 <td>Edit</td>
                 <td onClick={() => handleDelete(item.id)}>Delete</td>
-                {console.log(item.image.split("'")[5])}
-
-
               </tr>
-            </tbody>
-          ))
+            ))}
+          </tbody>
         ) : (
           <tbody>
             <tr>
-              <td>Ma'lumotlar yo'q</td>
+              <td colSpan="11">Ma'lumotlar yo'q</td>
             </tr>
           </tbody>
         )}
       </table>
+
+      {order && (
+        <Pagination
+        sx={{display: 'flex', justifyContent: 'flex-end', marginBlockStart: '20px'}}
+          count={Math.ceil(order.length / productsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+          className="pagination"
+        />
+      )}
     </div>
   );
 }
@@ -88,47 +116,3 @@ function AdmProduct() {
 export default AdmProduct;
 
 
-// import React, { useState, useEffect } from 'react';
-
-// const AdmProduct = () => {
-//   const [product, setProduct] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProduct = async () => {
-//       try {
-//         const response = await fetch('http://164.92.99.180:8000/pro/get/');
-//         const data = await response.json();
-//         setProduct(data.products[0]);
-//       } catch (error) {
-//         console.error('Error fetching product:', error);
-//       }
-//     };
-
-//     fetchProduct();
-//   }, []);
-
-//   if (!product) {
-//     return <div>Loading...</div>;
-//   }
-
-//   let imageUrl = '';
-//   try {
-//     const imagesArray = JSON.parse(product.image);
-//     imageUrl = imagesArray[0].image;
-//   } catch (error) {
-//     console.error('Error parsing image:', error);
-//   }
-
-//   return (
-//     <div>
-//       <h1>Product Details</h1>
-//       <img src={`http://164.92.99.180:8000${imageUrl}`} alt="Product" />
-//       <p>ID: {product.id}</p>
-//       <p>Quantity: {product.quantity}</p>
-//       <p>Cost: {product.cost}</p>
-//       {/* Add other product details rendering here */}
-//     </div>
-//   );
-// };
-
-// export default AdmProduct;

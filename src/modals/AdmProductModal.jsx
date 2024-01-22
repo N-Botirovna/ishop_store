@@ -3,32 +3,28 @@ import './admProModal.css';
 
 function AdmProductModal({ complete, isComplete }) {
   const [postID, setPostID] = useState(null);
-  const imagesRef = useRef(null);
+  const [colors, setColors] = useState([]);
+
+  const imagesRefs = useRef([]);
   const quantityRef = useRef(null);
   const costRef = useRef(null);
   const prosentRef = useRef(null);
   const nameRef = useRef(null);
+  const nameRefRu = useRef(null);
   const aboutRef = useRef(null);
+  const aboutRefRu = useRef(null);
   const modelRef = useRef(null);
+  const modelRefRu = useRef(null);
 
   function handlePost(e) {
     e.preventDefault();
-
-    const formData1 = new FormData();
     const formData2 = new FormData();
     const formData3 = new FormData();
+    const numColors = colors.length;
 
-    const imagesInput = imagesRef.current;
-    const quantityInput = quantityRef.current;
-    const costInput = costRef.current;
-    const prosentInput = prosentRef.current;
-    const nameInput = nameRef.current;
-    const aboutInput = aboutRef.current;
-    const modelInput = modelRef.current;
-
-    formData3.append('quantity', quantityInput.value);
-    formData3.append('cost', costInput.value);
-    formData3.append('prosent', prosentInput.value);
+    formData3.append('quantity', quantityRef.current.value);
+    formData3.append('cost', costRef.current.value);
+    formData3.append('prosent', prosentRef.current.value);
     formData3.append('tasdiq', true);
     formData3.append('admin', 1);
 
@@ -44,10 +40,10 @@ function AdmProductModal({ complete, isComplete }) {
         setPostID(postID);
 
         formData2.append('language', 'Uzbek');
-        formData2.append('name', nameInput.value);
-        formData2.append('about', aboutInput.value);
-        formData2.append('category', 'Elektronika');
-        formData2.append('model', modelInput.value);
+        formData2.append('name', nameRef.current.value);
+        formData2.append('about', aboutRef.current.value);
+        formData2.append('category', 'Noutbooklar');
+        formData2.append('model', modelRef.current.value);
         formData2.append('product', postID);
 
         return fetch('http://164.92.99.180:8000/pro/info', {
@@ -60,25 +56,78 @@ function AdmProductModal({ complete, isComplete }) {
         console.log('Product info posted successfully:', data);
         const productID = data.product;
 
+        for (let i = 0; i < numColors; i++) {
+          const color = colors[i];
+          const imagesInput = imagesRefs.current[i];
 
-        formData1.append('image', imagesInput.files[0]);
-        formData1.append('color', 'black');
-        formData1.append('pro_id', productID);
+          for (let j = 0; j < imagesInput.files.length && j < 5; j++) {
+            const imageFormData = new FormData();
+            imageFormData.append('image', imagesInput.files[j]);
+            imageFormData.append('color', color);
+            imageFormData.append('pro_id', productID);
 
-
-        return fetch('http://164.92.99.180:8000/pro/images', {
-          method: 'POST',
-          body: formData1,
-        });
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Image posted successfully:', data);
+            fetch('http://164.92.99.180:8000/pro/images', {
+              method: 'POST',
+              body: imageFormData,
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log('Image posted successfully:', data);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+          }
+        }
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   }
+
+  const handleColorChange = (index, event) => {
+    const updatedColors = [...colors];
+    updatedColors[index] = event.target.value;
+    setColors(updatedColors);
+  };
+
+  const handleImageChange = (index, event) => {
+    const updatedImagesRefs = [...imagesRefs.current];
+    updatedImagesRefs[index] = event.target;
+    imagesRefs.current = updatedImagesRefs;
+  };
+
+  const renderColorInputs = () => {
+    const colorInputs = [];
+    for (let i = 0; i < 3; i++) {
+      colorInputs.push(
+        <div key={i}>
+          <label htmlFor={`color${i}`}>Rang {i + 1}:</label>
+          <input
+            type="text"
+            id={`color${i}`}
+            value={colors[i] || ''}
+            onChange={(e) => handleColorChange(i, e)}
+          />
+          <div className="images-div">
+            {[...Array(5)].map((_, index) => (
+              <div key={index}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id={`image${i}-${index}`}
+                  ref={(ref) => (imagesRefs.current[i * 5 + index] = ref)}
+                  onChange={(e) => handleImageChange(i * 5 + index, e)}
+                  className={'images'}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+    return colorInputs;
+  };
 
   console.log('v', complete, isComplete);
 
@@ -86,11 +135,47 @@ function AdmProductModal({ complete, isComplete }) {
     <div className={isComplete ? 'none' : 'completed'}>
       <form onSubmit={handlePost}>
         <div className="adm-product-modal">
-          <h2>Fotosuratlarni yuklash</h2>
 
           <div>
             <label htmlFor="images">Fotosuratlarni yuklash:</label>
-            <input type="file" id="images" ref={imagesRef} />
+            {renderColorInputs()}
+          </div>
+
+          <h2>Tovar ma'lumotlari</h2>
+
+          <div className="abouts">
+            <div className="abouts-right">
+              <div>
+                <label htmlFor="name">Mahsulot nomi:</label>
+                <input type="text" id="name" ref={nameRef} />
+              </div>
+
+              <div>
+                <label htmlFor="model">Model:</label>
+                <input type="text" id="model" ref={modelRef} />
+              </div>
+
+              <div>
+                <label htmlFor="about">Tavsifi:</label>
+                <input type="text" id="about" placeholder='UZBEK' ref={aboutRef} />
+              </div>
+            </div>
+            <div className="abouts-left">
+            <div>
+            <label htmlFor="name">Mahsulot nomi(rus tilida):</label>
+            <input type="text" id="name" ref={nameRefRu} />
+          </div>
+
+          <div>
+            <label htmlFor="model">Model(rus tilida):</label>
+            <input type="text" id="model" ref={modelRefRu} />
+          </div>
+
+          <div>
+            <label htmlFor="about">Tavsifi(rus tilida):</label>
+            <input type="text" id="about" placeholder='UZBEK' ref={aboutRefRu} />
+          </div>
+            </div>
           </div>
 
           <div>
@@ -107,22 +192,6 @@ function AdmProductModal({ complete, isComplete }) {
             <label htmlFor="prosent">Prosent:</label>
             <input type="number" id="prosent" ref={prosentRef} />
           </div>
-
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" ref={nameRef} />
-          </div>
-
-          <div>
-            <label htmlFor="about">About:</label>
-            <input type="text" id="about" ref={aboutRef} />
-          </div>
-
-          <div>
-            <label htmlFor="model">Model:</label>
-            <input type="text" id="model" ref={modelRef} />
-          </div>
-
           <button type="submit">Submit</button>
         </div>
       </form>

@@ -2,9 +2,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import { UilEnvelopeDownload } from '@iconscout/react-unicons'
 import './otpInput.css';
 
-export default function OtpInput() {
+export default function OtpInput({number}) {
   const inputRefs = useRef([]);
-  const [resendTimer, setResendTimer] = useState(3); 
+  const [resendTimer, setResendTimer] = useState(60); 
+  console.log(number);
 
   useEffect(() => {
     let timerId;
@@ -50,7 +51,7 @@ export default function OtpInput() {
         <UilEnvelopeDownload />
       </div>
       <h3>Sms orqali yuborilgan xabarni kiriting</h3>
-      <p>+998*****4444 raqamiga qabul qilingan</p>
+      <p>+998*****{number.slice(7)} raqamiga qabul qilingan</p>
       <div className="otp-group">
         {[1, 2, 3, 4, 5, 6].map((digit, idx) => (
           <input

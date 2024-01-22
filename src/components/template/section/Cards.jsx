@@ -1,69 +1,83 @@
-import React from 'react'
-import Card from '../../ui/MyCard'
-import "./Cards.css"
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import MyCard from '../../ui/MyCard';
+import "./Cards.css";
 
-const Cards = () => {
+const Cards = ({ category }) => {
+  const [state, setState] = useState({
+    isFetched: false,
+    data: {},
+    error: false
+  });
 
-    return (
-        <>
-            {/* <ul>
-        {filteredCountries.map((country) => (
-          <CountryCard
-            key={country.name.common}
-            name={country.name.common}
-            flag={country.flags.png}
-            population={country.population}
-            reg={country.region}
-            cap={country.capital}
-            darkMode={darkMode}
-          />
-        ))}
-      </ul> */}
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://164.92.99.180:8000/pro/get/', {
+          params: {
+            category: category 
+          }
+        });
+        setState({
+          isFetched: true,
+          data: response.data,
+          error: false
+        });
+      } catch (error) {
+        setState({
+          isFetched: true,
+          data: {},
+          error: true
+        });
+        console.error('Error fetching data:', error);
+      }
+    };
 
-            <ul className='products'>
-                {Array.from({ length: 8 }).map((_, index) => (
-                    <Card key={index} />
-                ))}
-            </ul>
-        </>
+    fetchProducts();
+  }, [category]);
 
-    )
+  const filteredProducts = state.isFetched && !state.error && Array.isArray(state.data.products)
+    ? state.data.products.filter(product => product.info.category === category)
+    : [];
+
+  const sortedProducts = [...filteredProducts];
+  sortedProducts.sort((a, b) => {
+    // Sort by latest added (based on id)
+    if (a.id < b.id) return 1;
+    if (a.id > b.id) return -1;
+    return 0;
+  });
+
+  const cheapestProducts = [...filteredProducts];
+  cheapestProducts.sort((a, b) => a.price - b.price);
+
+  const expensiveProducts = [...filteredProducts];
+  expensiveProducts.sort((a, b) => b.price - a.price);
+
+  const mergedProducts = [...sortedProducts.slice(0, 4), ...cheapestProducts.slice(0, 2), ...expensiveProducts.slice(0, 2)];
+
+  return (
+    <>
+      {state.isFetched && !state.error ? (
+        <ul className='products'>
+          {mergedProducts.length > 0 ? (
+            mergedProducts.map((product) => (
+              <MyCard
+                key={product.id}
+                data={product}
+              />
+            ))
+          ) : (
+            <p>No products found</p>
+          )}
+        </ul>
+      ) : state.isFetched && state.error ? (
+        <p>Error fetching data</p>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </>
+  );
 }
 
-export default Cards
-
-// import React, { useEffect, useState } from 'react';
-// import Card from '../../ui/Card';
-// import "./Cards.css";
-// import axios from 'axios';
-
-// const Cards = () => {
-//     const [data, setData] = useState([]);
-
-//     useEffect(() => {
-//         fetchData();
-//     }, []);
-
-//     const fetchData = async () => {
-//         try {
-//             const response = await axios.get('https://nazimjonovna.pythonanywhere.com/', {
-//                 mode: 'cors'
-//               });
-//             setData(response.data);
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-
-//     return (
-//         <>
-//             <ul className='products'>
-//                 {data.slice(0, 8).map((product, index) => (
-//                     <Card key={index} product={product} />
-//                 ))}
-//             </ul>
-//         </>
-//     );
-// };
-
-// export default Cards;
+export default Cards;

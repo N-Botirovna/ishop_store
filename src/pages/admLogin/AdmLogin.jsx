@@ -44,7 +44,7 @@ export default function AdmLogin({ data }) {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.token) {
+                if (data !== 'Bunday admin yoq') {
                     setToken(data);
                     localStorage.setItem('token', JSON.stringify(data));
                 }
