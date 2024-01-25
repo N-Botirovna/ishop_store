@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import "./admProducts.css";
+import "./AdmProducts.css";
 import Pagination from '@mui/material/Pagination';
 
 function AdmProduct({ searchText }) {
