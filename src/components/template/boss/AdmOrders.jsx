@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import "./admProducts.css";
+import "../admin/AdmProducts.css";
 import Pagination from '@mui/material/Pagination';
 
-function AdmProduct({ searchText }) {
+function AdmOrder() {
   const [order, setOrder] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(10);
@@ -10,32 +10,32 @@ function AdmProduct({ searchText }) {
 
  
 
-  useEffect(() => {
-    fetch("http://164.92.99.180:8000/pro/get/", {
-      method: "GET",
-    })
-      .then((res) => res.json()) 
-      .then((data) => setOrder(data.products))
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+//   useEffect(() => {
+//     fetch("http://164.92.99.180:8000/pro/get/", {
+//       method: "GET",
+//     })
+//       .then((res) => res.json()) 
+//       .then((data) => setOrder(data.products))
+//       .catch((error) => {
+//         console.error("Error fetching data:", error);
+//       });
+//   }, []);
 
-  const handleDelete = (id) => {
-    const confirmed = window.confirm("Haqiqatan ham ushbu elementni o'chirmoqchimisiz?");
-    if (confirmed) {
-      fetch(`http://164.92.99.180:8000/pro/one/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("Element muvaffaqiyatli o'chirildi:", data);
-        })
-        .catch((error) => {
-          console.error("Elementni o'chirishda xato yuz berdi:", error);
-        });
-    }
-  };
+//   const handleDelete = (id) => {
+//     const confirmed = window.confirm("Haqiqatan ham ushbu elementni o'chirmoqchimisiz?");
+//     if (confirmed) {
+//       fetch(`http://164.92.99.180:8000/pro/one/${id}`, {
+//         method: "DELETE",
+//       })
+//         .then((res) => res.json())
+//         .then((data) => {
+//           console.log("Element muvaffaqiyatli o'chirildi:", data);
+//         })
+//         .catch((error) => {
+//           console.error("Elementni o'chirishda xato yuz berdi:", error);
+//         });
+//     }
+//   };
 
  
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -58,15 +58,12 @@ function AdmProduct({ searchText }) {
       <table className="table">
         <thead>
           <tr>
-            <th></th>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Category</th>
-            <th>Admin Name</th>
-            <th>Created Time</th>
-            <th>Postavshik</th>
+            <th>Num</th>
+            <th>Client</th>
+            <th>Status</th>
+            <th>Summa</th>
+            <th>Buyurtms sanasi</th>
+            <th>Tahrirlash sanasi</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -116,6 +113,4 @@ function AdmProduct({ searchText }) {
   );
 }
 
-export default AdmProduct;
-
-
+export default AdmOrder;

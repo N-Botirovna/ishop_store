@@ -6,9 +6,9 @@ import UserDataInput from './UserDataInput'
 export default function Register() {
   return (
     <div className='container'>
-        {/* <PhoneInput/> */}
+        <PhoneInput/>
         {/* <OtpInput/> */}
-        <UserDataInput/>
+        {/* <UserDataInput/> */}
     </div>
   )
 }

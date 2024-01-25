@@ -53,7 +53,7 @@ export default function OtpInput({number}) {
       <h3>Sms orqali yuborilgan xabarni kiriting</h3>
       <p>+998*****{number.slice(7)} raqamiga qabul qilingan</p>
       <div className="otp-group">
-        {[1, 2, 3, 4, 5, 6].map((digit, idx) => (
+        {[1, 2, 3, 4].map((digit, idx) => (
           <input
             key={idx}
             type="text"

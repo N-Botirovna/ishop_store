@@ -40,6 +40,8 @@ const Cards = ({ category }) => {
     ? state.data.products.filter(product => product.info.category === category)
     : [];
 
+    console.log('filter', filteredProducts);
+
   const sortedProducts = [...filteredProducts];
   sortedProducts.sort((a, b) => {
     // Sort by latest added (based on id)
@@ -47,14 +49,19 @@ const Cards = ({ category }) => {
     if (a.id > b.id) return -1;
     return 0;
   });
+  console.log('sort', sortedProducts);
 
   const cheapestProducts = [...filteredProducts];
-  cheapestProducts.sort((a, b) => a.price - b.price);
+  cheapestProducts.sort((a, b) => a.cost - b.cost);
+  console.log('cheap', cheapestProducts);
 
   const expensiveProducts = [...filteredProducts];
-  expensiveProducts.sort((a, b) => b.price - a.price);
+  expensiveProducts.sort((a, b) => b.cost - a.cost);
+  console.log('exp ', expensiveProducts);
 
   const mergedProducts = [...sortedProducts.slice(0, 4), ...cheapestProducts.slice(0, 2), ...expensiveProducts.slice(0, 2)];
+
+  console.log('mergedProducts:', mergedProducts);
 
   return (
     <>
@@ -63,7 +70,7 @@ const Cards = ({ category }) => {
           {mergedProducts.length > 0 ? (
             mergedProducts.map((product) => (
               <MyCard
-                key={product.id}
+                key={product.id} // Use the product's ID as the key
                 data={product}
               />
             ))

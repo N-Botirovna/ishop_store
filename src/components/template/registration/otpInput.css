@@ -29,9 +29,9 @@
 
 .otp-group{
     display: flex;
-    max-width: 300px;
+    max-width: 290px;
     width: 100%;
-    column-gap: 10px;
+    column-gap: 18px;
 }
 .otp-input{
     width: 100%;

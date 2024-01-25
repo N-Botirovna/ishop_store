@@ -1,0 +1,47 @@
+.left-menu{
+    padding: 0 40px;
+}
+.per-info p{
+    color: rgb(180, 179, 179);
+    padding-bottom: 30px;
+    font-size: 18px;
+}
+.edit{
+    padding: 10px 25px ;
+    border: 2px solid rgb(178, 178, 178);
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    font-size: 16px;
+    color: rgb(174, 174, 174);
+    margin-left: 13%;
+}
+.catalog-container .flex-container{
+    display: flex;
+    width: 100%;
+    gap: 7%;
+    justify-content: space-between;
+}
+.catalog-container .table{
+    width: 67%;
+}
+.catalog-container .filter{
+    width: 30%;
+    border: 1px solid rgb(187, 183, 183);
+    border-radius: 15px;
+    padding: 25px;
+}
+.catalog-container .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.catalog-container .add{
+    width: 70px;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(51, 217, 54);
+    text-align: center;
+    line-height: 50px;
+}

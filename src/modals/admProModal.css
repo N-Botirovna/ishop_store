@@ -9,11 +9,9 @@
 }
 
 .adm-product-modal {
-  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 20px;
+  margin-left: 10%;
 }
 
 .adm-product-modal h2 {
@@ -28,22 +26,47 @@
   padding: 10px;
   margin-bottom: 10px;
 }
-
-.adm-product-modal input[type="file"] {
-  margin-bottom: 10px;
+.addImages{
+  margin: 30px 0;
+}
+.images-div{
+  display: flex;
+  gap: 30px;
+}
+.custom-file-container {
+  
   display: inline-block;
-  border-radius: 5px;
-  width: 200px;
-  height: 40px;
-  padding-left: 10px;
-  border: 1px solid #ccc;
 }
 
-.adm-product-modal input[type="file"]::placeholder {
-  content: "+ Choose File";
-  color: #999;
+
+.custom-file-label {
+  width: 70px;
+  height: 70px;
+  background-color: #f1f1f1;
+  color: rgb(114, 112, 112);
+  border: 1px DASHED #ccc;
+  border-radius: 4px;
+  cursor: pointer; 
+  margin-top: 20px;
+  padding: 40px;
 }
 
+
+
+.custom-file-box::before {
+  content: 'Add Image';
+}
+
+.custom-file-box:hover {
+  background-color: #e1e1e1;
+}
+.images{
+  display: none;
+}
+h2{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 .adm-product-modal label {
   margin-right: 10px;
 }
@@ -53,13 +76,19 @@
 }
 .images-div{
   display: flex;
-  gap: 5px;
+  gap: 10px;
+  margin: 50px;
 }
 .abouts{
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   gap: 50px;
   margin-bottom: 40px;
+}
+.abouts-right div, .abouts-left div{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
   

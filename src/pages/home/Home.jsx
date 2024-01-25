@@ -18,10 +18,10 @@ const Home = () => {
         {<ProductCarousel item={<Accessuar />} />}
       </div>
       <Carousel2 />
-      <Section category="SomeOtherCategory" />
-      <Section category="Planshetlar" />
-      <Section category="YetAnotherCategory" />
       <Section category="Maishiy_texnika" />
+      <Section category="Planshetlar" />
+      <Section category="Aksesuarlar" />
+      <Section category="Texnika" />
       <div className='container'>
         {<ProductCarousel item={<MyCard />} />}
       </div>

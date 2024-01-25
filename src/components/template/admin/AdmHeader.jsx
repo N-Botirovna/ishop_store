@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import InputField from '../../ui/InputField';
 import { UilUser } from '@iconscout/react-unicons';
+import image from '../../../images/logo/logoLast.png'
 import './Header.css';
 
 import i18n from '../../../i18n';
@@ -25,7 +26,7 @@ const AdmHeader = ({ onSearch, onChangeLanguage }) => {
   return (
     <div className="header">
       <div className="logo header-logo">
-        <Link to="/" className="brand-logo">ishopstore</Link>
+        <Link to="/" className="brand-logo"><img className='logo' src={image} alt="ishopstore" /></Link>
       </div>
       <div className="search">
         <InputField

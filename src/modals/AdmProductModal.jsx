@@ -26,7 +26,7 @@ function AdmProductModal({ complete, isComplete }) {
     formData3.append('cost', costRef.current.value);
     formData3.append('prosent', prosentRef.current.value);
     formData3.append('tasdiq', true);
-    formData3.append('admin', 1);
+    formData3.append('admin', 2);
 
     fetch('http://164.92.99.180:8000/pro/post/', {
       method: 'POST',
@@ -108,18 +108,21 @@ function AdmProductModal({ complete, isComplete }) {
             id={`color${i}`}
             value={colors[i] || ''}
             onChange={(e) => handleColorChange(i, e)}
+            className= "color"
           />
           <div className="images-div">
-            {[...Array(5)].map((_, index) => (
-              <div key={index}>
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="custom-file-container">
+                <label htmlFor={`image${i}`} className="custom-file-label"> + </label>
                 <input
                   type="file"
                   accept="image/*"
-                  id={`image${i}-${index}`}
-                  ref={(ref) => (imagesRefs.current[i * 5 + index] = ref)}
-                  onChange={(e) => handleImageChange(i * 5 + index, e)}
-                  className={'images'}
+                  id={`image${i}`}
+                  ref={(ref) => (imagesRefs.current[i] = ref)}
+                  onChange={(e) => handleImageChange(i, e)}
+                  className="images"
                 />
+                
               </div>
             ))}
           </div>
@@ -137,7 +140,7 @@ function AdmProductModal({ complete, isComplete }) {
         <div className="adm-product-modal">
 
           <div>
-            <label htmlFor="images">Fotosuratlarni yuklash:</label>
+            <label htmlFor="images" className='addImages'>Fotosuratlarni yuklash:</label>
             {renderColorInputs()}
           </div>
 
@@ -161,20 +164,20 @@ function AdmProductModal({ complete, isComplete }) {
               </div>
             </div>
             <div className="abouts-left">
-            <div>
-            <label htmlFor="name">Mahsulot nomi(rus tilida):</label>
-            <input type="text" id="name" ref={nameRefRu} />
-          </div>
+              <div>
+                <label htmlFor="name">Mahsulot nomi(rus tilida):</label>
+                <input type="text" id="name" ref={nameRefRu} />
+              </div>
 
-          <div>
-            <label htmlFor="model">Model(rus tilida):</label>
-            <input type="text" id="model" ref={modelRefRu} />
-          </div>
+              <div>
+                <label htmlFor="model">Model(rus tilida):</label>
+                <input type="text" id="model" ref={modelRefRu} />
+              </div>
 
-          <div>
-            <label htmlFor="about">Tavsifi(rus tilida):</label>
-            <input type="text" id="about" placeholder='UZBEK' ref={aboutRefRu} />
-          </div>
+              <div>
+                <label htmlFor="about">Tavsifi(rus tilida):</label>
+                <input type="text" id="about" placeholder='UZBEK' ref={aboutRefRu} />
+              </div>
             </div>
           </div>
 
