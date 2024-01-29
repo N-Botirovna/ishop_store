@@ -1,7 +1,7 @@
 .otp-page{
     max-width: 280px;
     width: 100%;
-    padding:30px  50px;
+    padding:30px 50px;
     box-shadow: 0 0 7px #ccc;
     border-radius: 10px;
     margin: auto;
@@ -29,9 +29,9 @@
 
 .otp-group{
     display: flex;
-    max-width: 290px;
+    max-width: 310px;
     width: 100%;
-    column-gap: 18px;
+    column-gap: 10px;
 }
 .otp-input{
     width: 100%;

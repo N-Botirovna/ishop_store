@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import './SinglePage.css';
-import Navbar from '../../components/template/header/Navbar';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import "./SinglePage.css";
+import Navbar from "../../components/template/header/Navbar";
 import ProductCarousel from "../../components/ui/ProductCarousel";
-import Footer from "../../components/template/footer/Footer"
-import MyCard from '../../components/ui/MyCard';
+import Footer from "../../components/template/footer/Footer";
+import MyCard from "../../components/ui/MyCard";
 function SinglePage() {
   const { id } = useParams();
   const [state, setState] = useState({
@@ -13,6 +13,12 @@ function SinglePage() {
     data: {},
     error: false,
   });
+
+  const [selectedOption, setSelectedOption] = useState("12 oylik");
+
+  const handleButtonClick = (option) => {
+    setSelectedOption(option);
+  };
 
   useEffect(() => {
     axios
@@ -65,32 +71,61 @@ function SinglePage() {
             {image.map((img, index) => (
               <li
                 key={index}
-                className={`color-option ${index === 0 ? 'selected' : ''}`}
+                className={`color-option ${index === 0 ? "selected" : ""}`}
                 style={{ backgroundColor: img }}
               ></li>
             ))}
           </ul>
+          <p className="info-paragraph">Narxi</p>
           <p className="price">{data.pro.cost} UZS</p>
-          <h2>Bo'lib to'lash:</h2>
-          <div className="payment-options">
-            <button className="payment-button">3 oylik</button>
-            <button className="payment-button">6 oylik</button>
-            <button className="payment-button selected">12 oylik</button>
+          <div className="credit-div">
+            <h4 className="info-paragraph">Bo'lib to'lash:</h4>
+            <h4 className="credit-price">170 000 so'm oyiga</h4>
+            <div className="payment-options">
+              <button
+                className={`payment-button ${
+                  selectedOption === "3 oylik" ? "selected" : ""
+                }`}
+                onClick={() => handleButtonClick("3 oylik")}
+              >
+                3 oylik
+              </button>
+              <button
+                className={`payment-button ${
+                  selectedOption === "6 oylik" ? "selected" : ""
+                }`}
+                onClick={() => handleButtonClick("6 oylik")}
+              >
+                6 oylik
+              </button>
+              <button
+                className={`payment-button ${
+                  selectedOption === "12 oylik" ? "selected" : ""
+                }`}
+                onClick={() => handleButtonClick("12 oylik")}
+              >
+                12 oylik
+              </button>
+            </div>
           </div>
-          <div className="product-info">
-            <p>Tovar ma'lumotlari:</p>
-            <p>Kategoriya: {data.info[0].category}</p>
-            <p>Model: {data.info[0].model}</p>
-            <p>Qo'shimcha ma'lumotlar: </p>
-            <p>{data.info[0].about}</p>
+          <div className="buy-now">
+            <h2>Buyurtma berish:</h2>
+            <button className="buy-button">Hozir sotib olish</button>
+            <button className="buy-button">Sevimli</button>
+            <button className="buy-button">Savatga qo'shish</button>
           </div>
         </div>
       </div>
+      <div className="product-info ">
+        <p>Tovar ma'lumotlari:</p>
+        <p>Kategoriya: {data.info[0].category}</p>
+        <p>Model: {data.info[0].model}</p>
+        <p>Qo'shimcha ma'lumotlar: </p>
+        <p>{data.info[0].about}</p>
+      </div>
 
-      <ProductCarousel item={<MyCard/>}/>
-      <Footer/>
-      
-
+      <ProductCarousel item={<MyCard />} />
+      <Footer />
     </>
   );
 }

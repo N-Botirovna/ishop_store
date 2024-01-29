@@ -7,4 +7,26 @@
     width: 100%;
     justify-content: space-between;
     margin-top: 10px;
-}
+    font-size: 23px;
+  }
+  
+  .category {
+    position: relative;
+  }
+  
+  .subcategories {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    transition: 1s ease;
+  }
+  
+  .category:hover .subcategories {
+    display: block;
+  }

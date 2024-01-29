@@ -1,0 +1,32 @@
+.category-wrapper{
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    padding-top: 30px;
+    color: rgb(117, 116, 116);
+    font-size: large;
+}
+.categories-list{
+    width: 23%;
+}
+.left-holder{
+    width: 76%;
+
+}
+.pro-list{
+    display: flex;
+    gap: 25px;   
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items: center;
+}
+.li{
+    width: 20%;
+}
+.pagnation{
+    display: flex;
+    margin-top: 20px;
+    
+}
+

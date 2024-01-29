@@ -6,6 +6,7 @@ import UserCabinet from "./components/template/user/UserCabinet";
 import AdmProductModal from "./modals/AdmProductModal";
 import Admin from "./pages/admin/Admin";
 import AdmLogin from "./pages/admLogin/AdmLogin";
+import Categories from "./pages/categories/Categories";
 import Home from "./pages/home/Home";
 import Liked from "./pages/liked/Liked";
 import NoPage from "./pages/noPage/NoPage";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/admin" element={token ? <Admin/>: <AdmLogin data={{token, setToken}}/>} />
           <Route path="/boss-admin/*" element={<Boss/>} />
           <Route path="/single-page/:id" element={<SinglePage/>}/>
+          <Route path="/categories/:categoryname" element={<Categories/>}/>
           <Route path="/admin/admin/add" element={<AdmProductModal/>} />
           <Route path="/user/*" element={<UserCabinet/>} />
           <Route path="*" element={<NoPage />} />

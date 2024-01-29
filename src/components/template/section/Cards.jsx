@@ -44,7 +44,6 @@ const Cards = ({ category }) => {
 
   const sortedProducts = [...filteredProducts];
   sortedProducts.sort((a, b) => {
-    // Sort by latest added (based on id)
     if (a.id < b.id) return 1;
     if (a.id > b.id) return -1;
     return 0;

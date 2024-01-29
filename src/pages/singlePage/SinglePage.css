@@ -42,13 +42,24 @@
 }
 
 .price {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 2px;  
+  color: rgb(15, 189, 15);
 }
-
-.payment-options {
+.credit-div{
+  box-shadow: 0 0 2px #ccc;
+  padding: 20px 10px;
+  border-radius: 10px;
   margin-top: 20px;
+}
+.credit-price{
+  margin-bottom: 40px;
+  font-size: 25px;
+}
+.payment-options {
+  margin-top: 0;
+  
 }
 
 .payment-button {
@@ -60,14 +71,35 @@
 }
 
 .payment-button.selected {
-  background-color: green;
+  background-color: rgb(15, 189, 15);;
   color: white;
 }
 
 .product-info {
   margin-top: 20px;
+  padding: 40px;
 }
 
 .product-info p {
   margin: 5px 0;
+}
+.buy-now {
+  margin-top: 20px;
+}
+
+.buy-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.buy-button.selected {
+  background-color: green;
+  color: white;
+}
+.info-paragraph{
+  font-size: 14px;
+  color: rgb(184, 184, 184);
 }

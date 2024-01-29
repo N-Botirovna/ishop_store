@@ -85,7 +85,7 @@ function AdmProduct({ searchText }) {
                 <td>{item.quantity}</td>
                 <td>{item.info.category}</td>
                 <td>{item.admin}</td>
-                <td>{item.time}</td>
+                <td></td>
                 <td>{item.postavshik}</td>
                 <td>Edit</td>
                 <td onClick={() => handleDelete(item.id)}>Delete</td>

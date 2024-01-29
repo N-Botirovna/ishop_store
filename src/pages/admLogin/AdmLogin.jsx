@@ -19,22 +19,7 @@ export default function AdmLogin({ data }) {
             is_boss: false
         }
         console.log(obj);
-        // fetch('http://164.92.99.180:8000/adm/admin_login/', {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //       },
-        //     body: JSON.stringify(obj),
-        // }).then(res => res)
-        // .then(data => {
-        //     if(data.token){
-        //         setToken(data)
-        //     localStorage.setItem('token', JSON.stringify(data))
-        //     }
-        //     console.log('data', data);
-        //     console.log('token', token);
-        // })
-
+        
         fetch('http://164.92.99.180:8000/adm/admin_login/', {
             method: 'POST',
             headers: {
@@ -46,7 +31,7 @@ export default function AdmLogin({ data }) {
             .then(data => {
                 if (data !== 'Bunday admin yoq') {
                     setToken(data);
-                    localStorage.setItem('token', JSON.stringify(data));
+                    sessionStorage.setItem('token', JSON.stringify(data));
                 }
                 console.log('data', data);
                 console.log('token', token);

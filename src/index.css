@@ -6,7 +6,20 @@
 
 }
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif'
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+ul li{
+    list-style: none;
+}
+input{
+    outline: none;
+}
+button{
+    cursor: pointer;
 }
 .container{
     max-width: 1440px;
