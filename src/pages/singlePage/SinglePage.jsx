@@ -6,6 +6,7 @@ import Navbar from "../../components/template/header/Navbar";
 import ProductCarousel from "../../components/ui/ProductCarousel";
 import Footer from "../../components/template/footer/Footer";
 import MyCard from "../../components/ui/MyCard";
+import { UilHeart } from "@iconscout/react-unicons";
 function SinglePage() {
   const { id } = useParams();
   const [state, setState] = useState({
@@ -14,10 +15,10 @@ function SinglePage() {
     error: false,
   });
 
-  const [selectedOption, setSelectedOption] = useState("12 oylik");
+  const [selectedOption, setSelectedOption] = useState(3);
 
-  const handleButtonClick = (option) => {
-    setSelectedOption(option);
+  const handleSliderChange = (e) => {
+    setSelectedOption(parseInt(e.target.value));
   };
 
   useEffect(() => {
@@ -50,6 +51,7 @@ function SinglePage() {
   }
 
   const { image, name, cost } = data;
+  console.log(data);
 
   return (
     <>
@@ -82,37 +84,30 @@ function SinglePage() {
             <h4 className="info-paragraph">Bo'lib to'lash:</h4>
             <h4 className="credit-price">170 000 so'm oyiga</h4>
             <div className="payment-options">
+              <input
+                type="range"
+                min={3}
+                max={12}
+                step={1}
+                value={selectedOption}
+                onChange={handleSliderChange}
+              />
               <button
                 className={`payment-button ${
-                  selectedOption === "3 oylik" ? "selected" : ""
+                  selectedOption === 3 ? "selected" : ""
                 }`}
-                onClick={() => handleButtonClick("3 oylik")}
+                onClick={() => setSelectedOption(3)}
               >
-                3 oylik
-              </button>
-              <button
-                className={`payment-button ${
-                  selectedOption === "6 oylik" ? "selected" : ""
-                }`}
-                onClick={() => handleButtonClick("6 oylik")}
-              >
-                6 oylik
-              </button>
-              <button
-                className={`payment-button ${
-                  selectedOption === "12 oylik" ? "selected" : ""
-                }`}
-                onClick={() => handleButtonClick("12 oylik")}
-              >
-                12 oylik
+                {selectedOption} oylik
               </button>
             </div>
           </div>
           <div className="buy-now">
-            <h2>Buyurtma berish:</h2>
             <button className="buy-button">Hozir sotib olish</button>
-            <button className="buy-button">Sevimli</button>
-            <button className="buy-button">Savatga qo'shish</button>
+            <button className="buy-button">
+              {" "}
+              <UilHeart /> Sevimliga qo'shish
+            </button>
           </div>
         </div>
       </div>

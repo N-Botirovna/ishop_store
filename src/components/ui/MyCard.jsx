@@ -6,7 +6,7 @@ import "./card.css";
 
 function MyCard({ data }) {
   if (!data) {
-    return null; // or display a loading state or placeholder component
+    return null; 
   }
   const { id, quantity, cost,credit_12ga, time, prosent, images, info } = data;
   console.log(data);
@@ -23,7 +23,7 @@ function MyCard({ data }) {
               </button>
             </div>
             <div className="card-info-block">
-              <p className="product-card-subtitle">{info.name}</p>
+              <p className="product-card-subtitle">{info[0].name}</p>
               <div className="price-credit">
                 <p>{Math.floor(credit_12ga).toLocaleString()} so'mdan 12 oyga</p>
               </div>

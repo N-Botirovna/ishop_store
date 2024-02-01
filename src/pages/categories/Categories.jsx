@@ -76,7 +76,10 @@ function Categories(props) {
   return (
     <div>
       <Navbar />
+      <div className="myMenu">
       <Menu />
+      </div>
+      
       <div className="container category-wrapper">
         <div className="categories-list">
           <h3>{categoryname}</h3>

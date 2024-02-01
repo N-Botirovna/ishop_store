@@ -5,12 +5,12 @@ import './menu.css';
 const Menu = () => {
   const categories = [
     {
-      name: 'Noutbooklar',
+      name: 'Noutbuklar',
       subcategories: ['Macbook', 'HP', 'Lenova','Acer', 'Samsung',  'Dell','MSI','Asus', 'boshqa'],
     },
     {
       name: 'Smartfonlar',
-      subcategories: ['Apple','Samsung', 'Honor', 'Xiaomi', 'Vivo', 'Realme', 'Huawei', 'OPPO', 'Tecno', 'Infinix', 'Noney', 'Planshetlar', 'boshqa'],
+      subcategories: ['Apple','Samsung', 'Honor', 'Xiaomi', 'Vivo', 'Realme', 'Huawei', 'OPPO', 'Tecno',  'Planshetlar', 'boshqa'],
     },
     {
       name: 'Aksesuarlar',
@@ -21,7 +21,7 @@ const Menu = () => {
         'Mish',
         'Printer',
         'Naushnik',
-        'boshqa',
+        'Boshqa',
       ],
     },
     {

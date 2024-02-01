@@ -7,8 +7,6 @@ export default function Register() {
   return (
     <div className='container'>
         <PhoneInput/>
-        {/* <OtpInput/> */}
-        {/* <UserDataInput/> */}
     </div>
   )
 }

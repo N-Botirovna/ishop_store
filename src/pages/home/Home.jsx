@@ -21,7 +21,7 @@ const Home = () => {
       <Section category="Maishiy_texnika" />
       <Section category="Planshetlar" />
       <Section category="Aksesuarlar" />
-      <Section category="Texnika" />
+      <Section category="Kitoblar" />
       <div className='container'>
         {<ProductCarousel item={<MyCard />} />}
       </div>

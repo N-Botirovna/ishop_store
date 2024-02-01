@@ -10,7 +10,7 @@ function CategList({ name }) {
         },
         {
           name: 'Smartfonlar',
-          subcategories: ['Apple','Samsung', 'Honor', 'Xiaomi', 'Vivo', 'Realme', 'Huawei', 'OPPO', 'Tecno', 'Infinix', 'Noney', 'Planshetlar', 'boshqa'],
+          subcategories: ['Apple','Samsung', 'Honor', 'Xiaomi', 'Vivo', 'Realme', 'Huawei', 'OPPO', 'Tecno',  'Planshetlar', 'boshqa'],
         },
         {
           name: 'Aksesuarlar',

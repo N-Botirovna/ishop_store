@@ -80,12 +80,12 @@ function AdmProduct({ searchText }) {
                 <td>
                   <img src={item.images[0]?.image} alt="Product" />
                 </td>
-                <td>{item.info.name}</td>
+                <td>{item.info[0].name}</td>
                 <td>{item.cost} so'm</td>
                 <td>{item.quantity}</td>
-                <td>{item.info.category}</td>
+                <td>{item.info[0].category}</td>
                 <td>{item.admin}</td>
-                <td></td>
+                <td>{item.time}</td>
                 <td>{item.postavshik}</td>
                 <td>Edit</td>
                 <td onClick={() => handleDelete(item.id)}>Delete</td>

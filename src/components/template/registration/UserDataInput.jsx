@@ -45,7 +45,7 @@ const RegistrationForm = () => {
           {/* <legend>Registration</legend> */}
           <div className="fullname">
           <div className="form-group">
-            <label htmlFor="first">First Name:</label>
+            <label htmlFor="first">Ismingiz:</label>
             <input
               type="text"
               id="first"
@@ -60,7 +60,7 @@ const RegistrationForm = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="last">Last Name:</label>
+            <label htmlFor="last">Familyangiz:</label>
             <input
               type="text"
               id="last"
@@ -76,7 +76,7 @@ const RegistrationForm = () => {
           </div>
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Ixtiyoriy parol kiriting:</label>
             <input
               type="password"
               id="password"
@@ -91,7 +91,7 @@ const RegistrationForm = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="repassword">Confirm Password:</label>
+            <label htmlFor="repassword">Parolni tasdiqlang</label>
             <input
               type="password"
               id="repassword"
@@ -115,7 +115,7 @@ const RegistrationForm = () => {
         </fieldset>
       </form>
       <div className="link-signin">
-        Already have an Account? <Link to="/signin">SIGN IN</Link>
+        Ro'xatdan o'tganmisiz? <Link to="/signin">Kirish</Link>
       </div>
     </div>
   );

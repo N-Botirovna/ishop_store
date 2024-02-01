@@ -1,91 +1,8 @@
-// import React, { useState, useRef } from "react";
-// import "./admProModal.css";
-
-// function AdmProductModal({ complete, isComplete }) {
-//   const [images, setImages] = useState([]);
-
-//   const imagesRef = useRef(null);
-//   const imageFormData = new FormData();
-
-//   if (imagesRef.current && imagesRef.current.files.length > 0) {
-//     imageFormData.append("image", imagesRef.current.files[0]);
-//   }
-//   imageFormData.append("color", "oq");
-//   imageFormData.append("pro_id", 1);
-
-//   function handlePost(e) {
-//     e.preventDefault();
-
-//     fetch("http://164.92.99.180:8000/pro/images", {
-//       method: "POST",
-//       body: imageFormData,
-//     })
-//       .then((response) => response.json())
-//       .then((data) => {
-//         console.log("Image posted successfully:", data);
-//       })
-//       .catch((error) => {
-//         console.error("Error:", error);
-//       });
-//   }
-
-//   return (
-//     <div>
-//       <form
-//         onSubmit={handlePost}
-//         action="/upload"
-//         method="post"
-//         encType="multipart/form-data"
-//       >
-//         <div className="adm-product-modal">
-//           <div className="images-div">
-//             <div className="custom-file-container">
-//               <label htmlFor="image" className="custom-file-label">
-//                 +
-//               </label>
-//               <input
-//                 type="file"
-//                 accept="image/*"
-                
-//                 name="image"
-//                 id="image"
-//                 className="images"
-//                 ref={imagesRef}
-//               />
-//             </div>
-//           </div>
-
-//           <button className="adm-submit" type="submit">
-//             Submit
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
-
-// export default AdmProductModal;
-
 import React, { useState, useRef } from "react";
 import "./admProModal.css";
 
 function AdmProductModal({ complete, isComplete }) {
   const [postID, setPostID] = useState(null);
-  // const [images, setImages] = useState(null);
-
-  // const handleFileInputChange = (event) => {
-  //   const files = event.target.files[0];
-  //   const newImages = null;
-
-  //   for (let i = 0; i < files.length; i++) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       newImages.push(e.target.result);
-  //       setImages([...newImages]);
-  //     };
-  //     reader.readAsDataURL(files[i]);
-  //   }
-  // };
 
   const imagesRef = useRef(null);
   const quantityRef = useRef(null);
@@ -97,6 +14,10 @@ function AdmProductModal({ complete, isComplete }) {
   const modelRef = useRef(null);
   const modelRefRu = useRef(null);
   const categoryRef = useRef(null);
+  const descRef = useRef(null);
+  const descRefRu = useRef(null);
+  const postavshik = useRef(null);
+  
   console.log("images c v", imagesRef);
   function handlePost(e) {
     e.preventDefault();
@@ -107,6 +28,7 @@ function AdmProductModal({ complete, isComplete }) {
     formData3.append("cost", costRef.current.value);
     formData3.append("prosent", 3);
     formData3.append("tasdiq", true);
+    formData3.append("postavshik", postavshik.current.value);
     formData3.append("admin", 1);
 
     fetch("http://164.92.99.180:8000/pro/post/", {
@@ -125,6 +47,7 @@ function AdmProductModal({ complete, isComplete }) {
         formData2.append("about", aboutRef.current.value);
         formData2.append("category", categoryRef.current.value);
         formData2.append("model", modelRef.current.value);
+        formData2.append("description", descRef.current.value);
         formData2.append("product", postID);
 
         return fetch("http://164.92.99.180:8000/pro/info", {
@@ -141,9 +64,10 @@ function AdmProductModal({ complete, isComplete }) {
             formDataRu.append("about", aboutRefRu.current.value);
             formDataRu.append("category", categoryRef.current.value);
             formDataRu.append("model", modelRefRu.current.value);
+            formDataRu.append('description', descRefRu.current.value);
             formDataRu.append("product", postID);
 
-            console.log('product', postID);
+            console.log("product", postID);
 
             return fetch("http://164.92.99.180:8000/pro/info", {
               method: "POST",
@@ -151,11 +75,25 @@ function AdmProductModal({ complete, isComplete }) {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log("Pro/post posted successfully:", data);
+                console.log("Pro/info posted successfully:", data);
 
                 const productID = data.product;
                 const imageFormData = new FormData();
-                imageFormData.append("image", imagesRef.current.files[0]);
+
+                if (imagesRef.current && imagesRef.current.files.length > 0) {
+                  const fileNames = [];
+                  if (imagesRef.current && imagesRef.current.files.length > 0) {
+                    for (let i = 0; i < imagesRef.current.files.length; i++) {
+                      const fileName = imagesRef.current.files[i].name;
+                      fileNames.push(fileName);
+                    }
+                  }
+
+                  imageFormData.append("image", JSON.stringify(fileNames));
+                  console.log("image", JSON.stringify(fileNames));
+                }
+
+
                 imageFormData.append("color", "oq");
                 imageFormData.append("pro_id", productID);
 
@@ -166,7 +104,6 @@ function AdmProductModal({ complete, isComplete }) {
                   .then((response) => response.json())
                   .then((data) => {
                     console.log("Image posted successfully:", data);
-
                   })
                   .catch((error) => {
                     console.error("Error:", error);
@@ -185,57 +122,21 @@ function AdmProductModal({ complete, isComplete }) {
       });
   }
 
-  // const deleteImage = (idx) => {
-  //   setImages(images.filter((y, idxY) => idxY !== idx));
-  // };
   return (
     <div className={isComplete ? "none" : "completed"}>
-      <form onSubmit={handlePost}  action="/upload" method="post" encType="multipart/form-data">
+      <form
+        onSubmit={handlePost}
+        action="/upload"
+        method="post"
+        encType="multipart/form-data"
+      >
         <div className="adm-product-modal">
           <div>
             <label htmlFor="images" className="addImages">
               Fotosuratlarni yuklash:
             </label>
           </div>
-          {/* <div style={{ backgroundColor: "#ccc", display: "flex" }}>
-            {!!images &&
-              !!(images.length > 0) &&
-              images.map((x, idx) => (
-                <div
-                  style={{
-                    position: "relative",
-                  }}
-                  key={"image-preview-index" + idx}
-                >
-                  <img
-                    style={{
-                      objectFit: "cover",
-                      borderRadius: "20px",
-                      marginRight: "20px",
-                    }}
-                    width={200}
-                    height={200}
-                    src={x}
-                  />
-                  <button
-                    onClick={() => deleteImage(idx)}
-                    style={{
-                      backgroundColor: "#FF0000",
-                      position: "absolute",
-                      color: "#fff",
-                      top: "-10px",
-                      right: "10px",
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "50%",
-                      border: "none",
-                    }}
-                  >
-                    x
-                  </button>
-                </div>
-              ))}
-          </div> */}
+          
           <div className="images-div">
             <div className="custom-file-container">
               <label htmlFor="image" className="custom-file-label">
@@ -244,11 +145,10 @@ function AdmProductModal({ complete, isComplete }) {
               <input
                 type="file"
                 accept="image/*"
-                
                 name="image"
                 id="image"
+                multiple
                 className="images"
-                // onChange={handleFileInputChange}
                 ref={imagesRef}
               />
             </div>
@@ -268,8 +168,13 @@ function AdmProductModal({ complete, isComplete }) {
               </div>
 
               <div>
-                <label htmlFor="about">Tavsifi:</label>
-                <textarea id="about" ref={aboutRef} />
+                <label htmlFor="about1">Tavsifi:</label>
+                <textarea id="about1" ref={aboutRef} />
+              </div>
+              <br /> <br />
+              <div>
+                <label htmlFor="desc1">Xususiyatlari:</label>
+                <textarea id="desc1" ref={descRef} />
               </div>
             </div>
             <div className="abouts-left">
@@ -286,6 +191,11 @@ function AdmProductModal({ complete, isComplete }) {
               <div>
                 <label htmlFor="about">Tavsifi(rus tilida):</label>
                 <textarea id="about" ref={aboutRefRu} />
+              </div>
+              <br /><br />
+              <div>
+                <label htmlFor="desc">Xususiyatlari(rus tilida):</label>
+                <textarea id="desc" ref={descRefRu} />
               </div>
             </div>
           </div>
@@ -315,6 +225,10 @@ function AdmProductModal({ complete, isComplete }) {
               <label htmlFor="cost">Narx:</label>
               <input type="number" id="cost" ref={costRef} />
             </div>
+            <div>
+              <label htmlFor="post">Postavshik:</label>
+              <input type="text" id="post" ref={postavshik} />
+            </div>
           </div>
 
           <button className="adm-submit" type="submit">
@@ -327,3 +241,4 @@ function AdmProductModal({ complete, isComplete }) {
 }
 
 export default AdmProductModal;
+

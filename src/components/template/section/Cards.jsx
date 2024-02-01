@@ -1,81 +1,86 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import MyCard from '../../ui/MyCard';
 import "./Cards.css";
 
 const Cards = ({ category }) => {
   const [state, setState] = useState({
     isFetched: false,
-    data: {},
+    data: [],
     error: false
   });
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get('http://164.92.99.180:8000/pro/get/', {
-          params: {
-            category: category 
-          }
-        });
+        const response = await fetch("http://164.92.99.180:8000/pro/get/");
+        const data = await response.json();
         setState({
           isFetched: true,
-          data: response.data,
+          data: data.products,
           error: false
         });
+        console.log('data', data);
       } catch (error) {
         setState({
           isFetched: true,
-          data: {},
+          data: [],
           error: true
         });
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchProducts();
-  }, [category]);
+    fetchData();
+  }, []);
 
-  const filteredProducts = state.isFetched && !state.error && Array.isArray(state.data.products)
-    ? state.data.products.filter(product => product.info.category === category)
-    : [];
+  useEffect(() => {
+    if (state.isFetched && state.data.length === 0 && !state.error) {
+      console.log('No products found');
+    }
+  }, [state.isFetched, state.data, state.error]);
 
-    console.log('filter', filteredProducts);
+  const filteredProducts = state.isFetched && !state.error && Array.isArray(state.data)
+  ? state.data.filter(product => {
+      return product.info[0].category === category;
+    })
+  : [];
+
+  
 
   const sortedProducts = [...filteredProducts];
-  sortedProducts.sort((a, b) => {
-    if (a.id < b.id) return 1;
-    if (a.id > b.id) return -1;
-    return 0;
-  });
-  console.log('sort', sortedProducts);
+sortedProducts.sort((a, b) => {
+  if (a.id < b.id) return 1;
+  if (a.id > b.id) return -1;
+  return 0;
+});
 
-  const cheapestProducts = [...filteredProducts];
-  cheapestProducts.sort((a, b) => a.cost - b.cost);
-  console.log('cheap', cheapestProducts);
+const cheapestProducts = [...filteredProducts];
+cheapestProducts.sort((a, b) => a.cost - b.cost);
 
-  const expensiveProducts = [...filteredProducts];
-  expensiveProducts.sort((a, b) => b.cost - a.cost);
-  console.log('exp ', expensiveProducts);
+const expensiveProducts = [...filteredProducts];
+expensiveProducts.sort((a, b) => b.cost - a.cost);
 
-  const mergedProducts = [...sortedProducts.slice(0, 4), ...cheapestProducts.slice(0, 2), ...expensiveProducts.slice(0, 2)];
+const mergedProducts = [...sortedProducts.slice(0, 4), ...cheapestProducts.slice(0, 2), ...expensiveProducts.slice(0, 2)];
 
-  console.log('mergedProducts:', mergedProducts);
+const uniqueMergedProducts = mergedProducts.filter((product, index, self) => {
+  return self.findIndex((p) => p.id === product.id) === index;
+});
+
+console.log(uniqueMergedProducts);
+
 
   return (
     <>
       {state.isFetched && !state.error ? (
         <ul className='products'>
-          {mergedProducts.length > 0 ? (
-            mergedProducts.map((product) => (
+          {uniqueMergedProducts.length > 0 ? (
+            uniqueMergedProducts.map((product) => (
               <MyCard
-                key={product.id} // Use the product's ID as the key
+                key={product.id}
                 data={product}
               />
             ))
-          ) : (
-            <p>No products found</p>
-          )}
+          ) : null}
         </ul>
       ) : state.isFetched && state.error ? (
         <p>Error fetching data</p>

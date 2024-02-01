@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { UilHeart } from '@iconscout/react-unicons';
-import { UilCube } from '@iconscout/react-unicons';
 import { UilShoppingCartAlt } from '@iconscout/react-unicons';
 import { UilUser } from '@iconscout/react-unicons';
 import { UilBars } from '@iconscout/react-unicons';
@@ -27,7 +26,7 @@ const Navbar = () => {
         window.location.href = "/register";
         break;
       case "Savat":
-        window.location.href = "/shopping-cart";
+        window.location.href = "/basket";
         break;
       case "Saralangan":
         window.location.href = "/like";
@@ -56,7 +55,7 @@ const Navbar = () => {
           <div key={key} className="action-buttons">
             <div onClick={() => handleClick(key)}>
               {value}
-              <p>{t(key)}</p> {/* Tilga moslangan matn */}
+              <p>{t(key)}</p> 
             </div>
           </div>
         ))}
@@ -66,9 +65,8 @@ const Navbar = () => {
             onChange={(e) => changeLanguage(e.target.value)}
             className="custom-select"
           >
-            <option value="ru">Rus</option>
-            <option value="uz-latn">Latin</option>
-            <option value="uz-cyrl">Krill</option>
+            <option value="ru">Русский</option>
+            <option value="uz-latn">O'zbek</option>
           </select>
         </div>
       </div>

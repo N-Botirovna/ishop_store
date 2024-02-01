@@ -8,6 +8,7 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import OtpInput from './OtpInput';
 
+
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
   return (
@@ -28,6 +29,8 @@ export default function PhoneInput() {
   const numberRef = useRef(null);
   const [step, setStep] = useState('phone'); 
   const [num, setNum] = useState('');
+  const [data, setData] = useState(null);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -48,7 +51,7 @@ export default function PhoneInput() {
         if (data.status == true) {
           setNum(num);
           setStep('otp');
-          console.log('kjk',step);
+          setData(data)
         }
       })
       .catch((error) => {
@@ -98,7 +101,7 @@ export default function PhoneInput() {
         </div>
       )}
       {step === 'otp' && (
-        <OtpInput number = {num}/>
+        <OtpInput data = {data}/>
       )}
     </>
   );
