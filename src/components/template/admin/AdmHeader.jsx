@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputField from '../../ui/InputField';
 import { UilUser } from '@iconscout/react-unicons';
 import image from '../../../images/logo/logoLast.png'
-import './header.css';
+import './admHeader.css';
 
 import i18n from '../../../i18n';
 import { Link } from 'react-router-dom';
