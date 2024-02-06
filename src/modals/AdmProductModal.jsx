@@ -17,8 +17,9 @@ function AdmProductModal({ complete, isComplete }) {
   const descRef = useRef(null);
   const descRefRu = useRef(null);
   const postavshik = useRef(null);
+  const procentRef = useRef(null)
   
-  console.log("images c v", imagesRef);
+
   function handlePost(e) {
     e.preventDefault();
     const formData2 = new FormData();
@@ -26,7 +27,7 @@ function AdmProductModal({ complete, isComplete }) {
 
     formData3.append("quantity", quantityRef.current.value);
     formData3.append("cost", costRef.current.value);
-    formData3.append("prosent", 3);
+    formData3.append("prosent", procentRef.current.value);
     formData3.append("tasdiq", true);
     formData3.append("postavshik", postavshik.current.value);
     formData3.append("admin", 1);
@@ -64,7 +65,7 @@ function AdmProductModal({ complete, isComplete }) {
             formDataRu.append("about", aboutRefRu.current.value);
             formDataRu.append("category", categoryRef.current.value);
             formDataRu.append("model", modelRefRu.current.value);
-            formDataRu.append('description', descRefRu.current.value);
+            formDataRu.append("description", descRefRu.current.value);
             formDataRu.append("product", postID);
 
             console.log("product", postID);
@@ -82,20 +83,16 @@ function AdmProductModal({ complete, isComplete }) {
 
                 if (imagesRef.current && imagesRef.current.files.length > 0) {
                   const fileNames = [];
-                  if (imagesRef.current && imagesRef.current.files.length > 0) {
-                    for (let i = 0; i < imagesRef.current.files.length; i++) {
-                      const fileName = imagesRef.current.files[i].name;
-                      fileNames.push(fileName);
-                    }
+                  
+                  for (var i = 0; i < imagesRef.current.files.length; i++) {
+                    imageFormData.append("image", imagesRef.current.files[i]);
                   }
-
-                  imageFormData.append("image", JSON.stringify(fileNames));
-                  console.log("image", JSON.stringify(fileNames));
+                  console.log("image", fileNames);
                 }
 
-
-                imageFormData.append("color", "oq");
+                imageFormData.append("color_key", "oq");
                 imageFormData.append("pro_id", productID);
+                console.log("pro_id", productID, typeof productID);
 
                 fetch("http://164.92.99.180:8000/pro/images", {
                   method: "POST",
@@ -136,7 +133,7 @@ function AdmProductModal({ complete, isComplete }) {
               Fotosuratlarni yuklash:
             </label>
           </div>
-          
+
           <div className="images-div">
             <div className="custom-file-container">
               <label htmlFor="image" className="custom-file-label">
@@ -161,12 +158,10 @@ function AdmProductModal({ complete, isComplete }) {
                 <label htmlFor="name">Mahsulot nomi:</label>
                 <input type="text" id="name" ref={nameRef} />
               </div>
-
               <div>
                 <label htmlFor="model">Model:</label>
                 <input type="text" id="model" ref={modelRef} />
               </div>
-
               <div>
                 <label htmlFor="about1">Tavsifi:</label>
                 <textarea id="about1" ref={aboutRef} />
@@ -192,7 +187,8 @@ function AdmProductModal({ complete, isComplete }) {
                 <label htmlFor="about">Tavsifi(rus tilida):</label>
                 <textarea id="about" ref={aboutRefRu} />
               </div>
-              <br /><br />
+              <br />
+              <br />
               <div>
                 <label htmlFor="desc">Xususiyatlari(rus tilida):</label>
                 <textarea id="desc" ref={descRefRu} />
@@ -207,12 +203,10 @@ function AdmProductModal({ complete, isComplete }) {
                 <option value="Smartfonlar">Smartfonlar</option>
                 <option value="Planshetlar">Planshetlar</option>
                 <option value="Aksesuarlar">Aksessuarlar</option>
-
                 <option value="Maishiy_texnika">Maishiy texnika</option>
                 <option value="Atir">Atirlar</option>
                 <option value="Kitoblar">Kitoblar</option>
                 <option value="Texnika">Texnika</option>
-
                 <option value="planshetlar">Avtobar</option>
               </select>
             </div>
@@ -229,6 +223,10 @@ function AdmProductModal({ complete, isComplete }) {
               <label htmlFor="post">Postavshik:</label>
               <input type="text" id="post" ref={postavshik} />
             </div>
+            <div>
+              <label htmlFor="procent">Foiz:</label>
+              <input type="number" id="procent" ref={procentRef} />
+            </div>
           </div>
 
           <button className="adm-submit" type="submit">
@@ -241,4 +239,3 @@ function AdmProductModal({ complete, isComplete }) {
 }
 
 export default AdmProductModal;
-

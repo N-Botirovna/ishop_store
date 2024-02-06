@@ -4,6 +4,7 @@ import './otpInput.css';
 import RegistrationForm from './UserDataInput';
 
 export default function OtpInput({ data }) {
+  const num_otp = data;
   const inputRefs = useRef([]);
   const [resendTimer, setResendTimer] = useState(60);
   const [verifyCode, setVerifyCode] = useState('');
@@ -95,7 +96,7 @@ export default function OtpInput({ data }) {
         </div>
       )}
       {currentStep === 2 && (
-        <RegistrationForm />
+        <RegistrationForm  propData = {num_otp}/>
       )}
     </>
   );

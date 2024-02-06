@@ -8,7 +8,7 @@ import InputField from '../../ui/InputField';
 import { useTranslation } from 'react-i18next';
 import './navbar.css';
 import i18n from '../../../i18n';
-import image from '../../../../src/images/logo/logoLast.png'
+import image from './../../../../../../../Desktop/logo_new.jpg'
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -46,7 +46,7 @@ const Navbar = () => {
       </div>
       <div className="middle-header">
         <div className="header-catalog">
-          <button className="header-bars"><UilBars /></button>
+          <button className="header-bars"><UilBars /> <p>Katalog</p></button>
         </div>
         <InputField />
       </div>

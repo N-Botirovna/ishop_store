@@ -1,12 +1,13 @@
 .product-card {
     background-color: #fff;
-    height: auto;
+    height: 390px;
     overflow: hidden;
     position: relative;
     border-radius: 7px;
     width: 100%;
     cursor: pointer;
     transition: 0.3s;
+    position: relative;
   }
 
   
@@ -56,19 +57,21 @@
     flex-direction: column;
     justify-content: flex-start;
     row-gap: 15px;
+    
+  }
+  .bottom{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
   }
   
   .product-card-price-info-wrapper {
     display: flex;
     justify-content: space-between;
   }
-  
-  .product-card-credit-amount {
-    background-color: rgb(255, 255, 0);
-    width: 100%;
-    padding: 5px;
-  }
-  
+
   .product-card:hover {
     border-color: #ccc;
   }
@@ -79,8 +82,8 @@
   }
   
   .product-card-subtitle {
-    font-size: 14px;
-    color: #888;
+    font-size: 17px;
+    color: black;
   }
   
   .product-card-price-info {
@@ -107,14 +110,13 @@
   .price-credit {
   
     /* background: #ff6600; */
-    background-color: rgb(94, 221, 85);
+    background-color: #31F701FF;
     margin-right: auto;
-    padding:4px 8px;
-    color: white;
+    padding:5px 10px;
     border-radius: 4px;
 }
 .price-credit p {
-    font-size: 12px;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     
 }
@@ -140,4 +142,11 @@ h4{
   width: 400px;
   height: 680px;
   background-color: transparent;
+}
+.product-card-like.liked {
+  color: red;
+}
+
+.product-add-to-cart.added {
+  background-color: green;
 }

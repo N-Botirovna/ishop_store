@@ -19,7 +19,6 @@ const Cards = ({ category }) => {
           data: data.products,
           error: false
         });
-        console.log('data', data);
       } catch (error) {
         setState({
           isFetched: true,
@@ -66,7 +65,6 @@ const uniqueMergedProducts = mergedProducts.filter((product, index, self) => {
   return self.findIndex((p) => p.id === product.id) === index;
 });
 
-console.log(uniqueMergedProducts);
 
 
   return (

@@ -18,7 +18,7 @@ const InputField = ({ type, name, placeholder, btnType, onSearch }) => {
 
   return (
     <div className="header-search">
-      <div className="search-block">
+      
         <input
           className="search-input-component"
           type={type || 'text'}
@@ -28,7 +28,7 @@ const InputField = ({ type, name, placeholder, btnType, onSearch }) => {
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-      </div>
+      
       <button className="header-search-button" type={btnType || 'submit'} onClick={onSearch}>
         <UilSearch className="search" />
       </button>

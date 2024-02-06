@@ -1,26 +1,36 @@
 .single-page {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.single-page .carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  height: 300px;
-  overflow: hidden;
-}
-
-.single-page .carousel-image {
   width: 100%;
-  height: auto;
+  padding: 20px;
+  gap: 20px;
+}
+.info-holder{
+  color: rgb(36, 36, 36);
+  font-size: 17px;
+  line-height: 22px;
+}
+.info-holder h2{
+  font-size: 25px;
 }
 
 .product-details {
+  width: 35%;
   margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgb(172, 172, 172);
+  padding-top: 20px;
+  
+}
+.inner-details{
+  border-radius: 20px;
+}
+.single-carousel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
 }
 
 .color-options {
@@ -42,13 +52,13 @@
 }
 
 .price {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   margin-top: 2px;  
-  color: rgb(15, 189, 15);
+  
 }
 .credit-div{
-  box-shadow: 0 0 2px #ccc;
+  border:  1px groove rgb(235, 233, 233);
   padding: 20px 10px;
   border-radius: 10px;
   margin-top: 20px;
@@ -60,19 +70,6 @@
 .payment-options {
   margin-top: 0;
   
-}
-
-.payment-button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.payment-button.selected {
-  background-color: rgb(15, 189, 15);;
-  color: white;
 }
 
 .product-info {
@@ -110,5 +107,159 @@
 }
 .info-paragraph{
   font-size: 14px;
-  color: rgb(184, 184, 184);
+  color: black;
 }
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image {
+  width: 470px;
+  height: 450px;
+  
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.thumbnail:last-child {
+  margin-right: 0;
+}
+
+.thumbnail.active {
+ box-shadow: 0 0 3px #ccc;
+}
+.info-div {
+  
+  color: rgb(35, 34, 34);
+  font-size: 16px;
+  line-height: 28px;
+  
+  
+}
+.about{
+  margin: 0 4%;
+  border: 1px groove rgb(224, 223, 223);
+  padding: 7px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+   appearance: none;
+   background: transparent;
+   cursor: pointer;
+   width: 12rem;
+}
+
+input[type="range"]:focus {
+ outline: none;
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: rgb(219, 216, 216);
+  border-radius: 0.5rem;
+  height: 0.5rem;  
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+ -webkit-appearance: none; 
+  appearance: none;
+  margin-top: -12px; 
+
+
+  background-color: #31F701FF;
+  height: 2rem;
+  width: 0.7rem;
+}
+
+input[type="range"]::-moz-range-track {
+  background-color: rgb(221, 220, 220);
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: none; 
+  border-radius: 0; 
+  background-color:#31F701FF;
+  height: 2rem;
+  width: 0.7rem;
+}
+.credit-span{
+  padding: 7px 12px;
+ 
+  margin-left: 10px;
+  
+  background-color: #31F701FF;
+  color: black;
+}
+.credit-month{
+  padding: 7px 16px;
+ 
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: rgb(241, 240, 240);
+  color: rgb(14, 13, 13);
+}
+.selected-month{
+  background-color: #31F701FF;
+  box-shadow: 0 0 2px #fff;
+  color:black;
+  transition: 0.6s all;
+}
+.uzum-blok{
+  box-shadow: 0 0  2px rgb(158, 158, 158);
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.uzum-blok h2{
+  font-size: 19px;
+  line-height: 8px;
+}
+.uzums{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.uzumLogo{
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+.naqd{
+  margin-top: 30px;
+  box-shadow: 0 0  2px #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px !important;
+}
+.method:hover{
+  transform: scale(1.02);
+  transition: 0.5s ease;
+}
+#naqd , #solfy, #terminal{
+  accent-color: #31F701FF;
+}
+
+
+
+
