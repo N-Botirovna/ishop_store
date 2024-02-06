@@ -8,7 +8,7 @@ import InputField from '../../ui/InputField';
 import { useTranslation } from 'react-i18next';
 import './navbar.css';
 import i18n from '../../../i18n';
-import image from './../../../../../../../Desktop/logo_new.jpg'
+import image from "./../../../images/logo/logo_new.jpg"
 
 const Navbar = () => {
   const { t } = useTranslation();

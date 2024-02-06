@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputField from '../../ui/InputField';
 import { UilUser } from '@iconscout/react-unicons';
-import image from '../../../images/logo/logoLast.png'
+import image from "./../../../images/logo/logo_new.jpg"
 import './admHeader.css';
 
 import i18n from '../../../i18n';

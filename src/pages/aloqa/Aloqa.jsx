@@ -1,6 +1,6 @@
 import Menu from "../../components/template/header/Menu";
 import React, { useEffect } from "react";
-import logo from "../../images/logo/logoLast.png";
+import logo from "./../../images/logo/logo_new.jpg"
 import "./aloqa.css";
 import { Key } from "@mui/icons-material";
 
